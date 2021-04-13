@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../resources/templates/plantilla.xhtml">            
+            
+            <ui:define name="content">
+                <h:form id="editaUsuarioForm">
+                    <b:container fluid="true">
+                        <b:panel title="Edita Usuario" look="warning" collapsible="false">
+                            
+                            
+                            <!-- idUsuario -->
+                            <b:row tooltip="El username no se modifica">
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Username" for="idUsuario"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Nombre de usuario" id="idUsuario"
+                                                 value="#{usuarioController.idUsuario}"
+                                                 readonly="true"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="idUsuario"/>
+                                </b:column>
+                            </b:row>
+                            
+                            <!-- pwUsuario -->
+                            <b:row tooltip="Digite la nueva contraseña">
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Contraseña" for="pwUsuario" />
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputSecret placeholder="Contraseña" 
+                                                   id="pwUsuario" 
+                                                   required="true"
+                                                   value="#{usuarioController.pwUsuario}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="pwUsuario"/>
+                                </b:column>
+                            </b:row>
+                            
+                            <!-- nombre -->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Nombre" for="nombre"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Nombre" 
+                                                 id="nombre" 
+                                                 required="true"
+                                                 value="#{usuarioController.nombre}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="nombre"/>
+                                </b:column>
+                            </b:row>
+                            
+                            <!-- apellido1 -->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Primer Apellido" for="apellido1"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Primer Apellido" 
+                                                 id="apellido1" 
+                                                 required="true"
+                                                 value="#{usuarioController.apellido1}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="apellido1"/>
+                                </b:column>
+                            </b:row>
+                            
+                            <!-- apellido2 -->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Segundo Apellido" for="apellido2"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Segundo Apellido" 
+                                                 id="apellido2" 
+                                                 required="true"
+                                                 value="#{usuarioController.apellido2}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="apellido2"/>
+                                </b:column>
+                            </b:row>
+                            
+                            <!-- correo -->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Correo" for="correo"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="Correo"
+                                                 required="true"  
+                                                 mask="email"
+                                                 id="correo"
+                                                 value="#{usuarioController.correo}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="correo"/>
+                                </b:column>
+                            </b:row>
+                            
+                            <!-- celular -->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Celular" for="celular"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Número celular" 
+                                                 id="celular" 
+                                                 required="true"
+                                                 value="#{usuarioController.celular}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="celular"/>
+                                </b:column>
+                            </b:row>
+                            
+                            <!-- genero -->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Género" for="genero"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:panelGrid columns="2">
+                                        <b:radiobutton value="#{usuarioController.genero}"
+                                                       itemLabel="Masculino" itemValue="M"/>
+                                        <b:radiobutton value="#{usuarioController.genero}"
+                                                       itemLabel="Femenino" itemValue="F"/>
+                                    </b:panelGrid>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="genero"/>
+                                </b:column>
+                            </b:row>
+                            
+                            <!-- domicilio -->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Domicilio" for="domicilio"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText placeholder="Digite su dirección" 
+                                                 id="domicilio" 
+                                                 required="true"
+                                                 value="#{usuarioController.domicilio}"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="domicilio"/>
+                                </b:column>
+                            </b:row>                            
+                            
+                            <b:row>
+                                <b:column medium-screen="2"/>
+                                <b:column medium-screen="4">
+                                    
+                                    <b:commandButton value="Modificar"
+                                                     look="success"
+                                                     style="width: 33%"
+                                                     action="#{usuarioController.updateUsuario()}"
+                                                     />                                                                        
+                                </b:column>                                
+                            </b:row>
+                        </b:panel> 
+                    </b:container>
+                </h:form> 
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

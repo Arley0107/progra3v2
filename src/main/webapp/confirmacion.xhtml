@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        
+        <style>
+            
+            #x{
+                padding-top: 75px
+            }
+            
+        </style>
+    </h:head>
+    <h:body>
+        <b:container fluid="true">
+            <b:panel id="x" title="Usuario Creado satisfactoriamente" look="primary">
+                        <b:row>
+                            <b:column medium-screen="3">
+                                <h:outputLabel value="Mantenga este código QR en caso de futuras transacciones en Mariann´s Food"/>
+                            </b:column>
+                            <b:column medium-screen="3">
+                                <p:barcode type="qr" value="#{usuarioController.toString()}" width="350px"/>   
+                                <b:button value="Ir a iniciar sesión"
+                                     look="primary"
+                                     style="width: 100%"
+                                     href="#{request.contextPath}/faces/index.xhtml"/>  
+                            </b:column>
+                        </b:row>
+                    </b:panel>
+                </b:container>
+    </h:body>
+</html>
+

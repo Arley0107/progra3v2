@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="cssLayout.css"/>
+        <title>Página principal</title>
+    </h:head>
+
+    <h:body style="background-color: #dddddd">       
+
+        <div id="top" class="top">
+
+            <ui:insert name="top">
+                <b:navBar class="nav" inverse="false" fluid="true">                        
+                    <b:navbarLinks>       
+
+                        <!-- Menú -->
+                        <b:dropMenu value="Menú" icon-awesome="fa-leanpub">
+                            <b:navLink value="Comidas típicas" href="#"/>
+                            <b:navLink value="Casados" href="#"/>
+                            <b:navLink value="Comida saludable" href="#"/>
+                           
+                        </b:dropMenu>
+                        
+                        <!-- Sucursales -->
+                        <b:dropMenu value="Sucursales" icon-awesome="fa-home">
+                            <b:navLink value="San José" href="#"/>
+                            <b:navLink value="Cartago" href="#"/>
+                            <b:navLink value="Heredia" href="#"/>
+                        </b:dropMenu> 
+                        
+                        <!-- Pedidos -->
+                        <b:dropMenu value="Pedidos" icon-awesome="fa-cart-plus">
+                            <b:navLink value="Realizar Pedido" href="#{request.contextPath}/faces/pedidos/realizarPedido.xhtml"/>                            
+                        </b:dropMenu>
+                        
+                        <!-- Usuarios -->
+                        <b:dropMenu value="Usuarios" icon-awesome="fa-group" rendered="#{usuarioController.show}">
+                            <b:navLink value="Lista de usuarios" href="#{request.contextPath}/faces/usuarios/listaUsuarios.xhtml"/>
+                            <b:navLink value="Buscar Usuarios" href="#{request.contextPath}/faces/usuarios/buscarUsuario.xhtml"/>
+                        </b:dropMenu> 
+                        
+                        <!-- Reportes -->
+                        <b:dropMenu value="Reportes" icon-awesome="fa-newspaper-o" rendered="#{usuarioController.show}">
+                            <b:navLink value="Usuario" href="#{request.contextPath}/faces/usuarios/reporte/reporteUsuario.xhtml"/>
+                        </b:dropMenu> 
+                        
+                        <!-- Gráfico -->                        
+                            <b:navLink value="Gráfico" icon-awesome="fa-pie-chart" href="#{request.contextPath}/faces/dashboard/grafico06.xhtml"
+                                       rendered="#{usuarioController.show}"/> 
+
+                        <!-- Respaldo -->                        
+                            <b:navLink value="Respaldo" icon-awesome="fa-save" href="#{request.contextPath}/faces/respaldo/respaldo.xhtml"
+                                       rendered="#{usuarioController.show}"/>                       
+                    </b:navbarLinks>
+
+                    <b:navbarLinks pull="right" style-class="hidden-xs">                           
+                        <b:dropMenu value="Cuenta" icon-awesome="fa-user">                            
+                            <b:navLink value="Editar perfil" href="#{request.contextPath}/faces/usuarios/editarUsuarios.xhtml"/>
+                            <b:navLink value="Cerrar Sesión" action="#{usuarioController.logout()}"/>
+                        </b:dropMenu>
+                        <b:dropMenu value="" icon-awesome="fa-cog">
+                        </b:dropMenu>                                                                          
+                    </b:navbarLinks>
+                </b:navBar> 
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+    </h:body>
+
+</html>
