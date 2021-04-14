@@ -24,6 +24,7 @@ public class UsuarioGestion {
     private static final String SQL_UPDATEUSUARIO = "Update usuario set idUsuario=?,pwUsuario=?,nombre=?,apellido1=?,apellido2=?,correo=?,celular=?,genero=?,domicilio=? where id=? and idUsuario=?";
     private static final String SQL_DELETEUSUARIO = "Delete from usuario where idUsuario=?";
     private static final String SQL_GETUSUARIOREPORTE = "SELECT * FROM usuario where idUsuario=?";
+              
 
     public static Usuario getUsuarioLogin(String idUsuario, String pwUsuario) {
         Usuario usuario = null;
@@ -231,6 +232,6 @@ public class UsuarioGestion {
 
         }
         return tiraJson;
-    }
+    }        
     
 }

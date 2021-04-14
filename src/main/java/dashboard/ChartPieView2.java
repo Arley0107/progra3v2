@@ -36,9 +36,10 @@ public class ChartPieView2 implements Serializable {
     }
  
     private void createPieModel2() {
-        pieModel2 = new PieChartModel(); 
+        pieModel2 = new PieChartModel();
+ 
         pieModel2.set("Brand 1", 540);
-        pieModel2.set("Pablo", 325);
+        pieModel2.set("Brand 2", 325);
         pieModel2.set("Brand 3", 702);
         pieModel2.set("Brand 4", 421);
  

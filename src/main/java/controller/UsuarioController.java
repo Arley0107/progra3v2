@@ -1,23 +1,14 @@
 package controller;
 
 import gestion.UsuarioGestion;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.nio.file.Files;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Conexion;
 import model.Usuario;
 
 @Named(value = "usuarioController")
@@ -68,7 +59,7 @@ public class UsuarioController extends Usuario implements Serializable {
             return "index.xhtml";
         }
     }
-    
+
     public void buscarUsuario(String idUsuario) {
         Usuario u = UsuarioGestion.buscarUsuario(idUsuario);
         if (u != null) {
@@ -77,7 +68,7 @@ public class UsuarioController extends Usuario implements Serializable {
             this.setApellido1(u.getApellido1());
             this.setApellido2(u.getApellido2());
             this.setCorreo(u.getCorreo());
-            this.setCelular(u.getCelular());            
+            this.setCelular(u.getCelular());
             this.setGenero(u.getGenero());
             this.setDomicilio(u.getDomicilio());
             noImprimir = false;
@@ -136,15 +127,13 @@ public class UsuarioController extends Usuario implements Serializable {
         }
     }
 
-    public void logout() {
-        FacesContext.getCurrentInstance().getExternalContext()
-                .invalidateSession();
-        FacesContext
-                .getCurrentInstance()
-                .getApplication()
-                .getNavigationHandler()
-                .handleNavigation(FacesContext.getCurrentInstance(), null,
-                        "/index.xhtml");
+    public String logout() {
+        String respuesta = "principal.xhtml";
+        if (Conexion.getConexion() != null) {
+            respuesta = "index.xhtml";
+        }
+        return respuesta;
+
     }
 
     public String insertaUsuario() {
@@ -156,5 +145,5 @@ public class UsuarioController extends Usuario implements Serializable {
             FacesContext.getCurrentInstance().addMessage("ingresaUsuarioForm:identificacion", msg);
             return "registroUsuario.xhtml";
         }
-    }        
+    }
 }
