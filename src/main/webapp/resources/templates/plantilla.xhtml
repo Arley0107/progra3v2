@@ -10,6 +10,20 @@
         <h:outputStylesheet library="css" name="default.css"/>
         <h:outputStylesheet library="css" name="cssLayout.css"/>
 
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";                
+            }
+        </script>
+        <script>
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+                document.body.style.backgroundColor = "white";
+            }
+        </script>
+
     </h:head>
 
     <h:body>   
@@ -19,7 +33,14 @@
             <ui:insert name="top">
                 <b:navBar class="nav" inverse="false" fluid="true"> 
                     <b:navbarLinks pull="left">
-                        <b:navLink icon-awesome="list" />
+                        <div id="mySidenav" class="sidenav">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            <a href="#">Sobre nosotros</a>
+                            <a href="#">Contáctanos</a>                            
+                        </div>
+
+                        <!-- Use any element to open the sidenav -->
+                        <b:navLink onclick="openNav()" icon-awesome="list"/>                       
                     </b:navbarLinks>
                     <a class="navbar-brand" href="#{request.contextPath}/faces/principal.xhtml">
                         <b:image library="images" name="logo.jpeg" width="35" height="35" style="position: relative"/>
@@ -78,8 +99,10 @@
             </ui:insert>
         </div>
 
-        <div id="content" class="center_content">
-            <ui:insert name="content">Content</ui:insert>
+        <div id="main">
+            <div id="content" class="center_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
         </div>
     </h:body>
 
