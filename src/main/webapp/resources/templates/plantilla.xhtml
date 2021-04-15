@@ -9,64 +9,70 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="default.css"/>
         <h:outputStylesheet library="css" name="cssLayout.css"/>
-        <title>Página principal</title>
+
     </h:head>
 
-    <h:body style="background-color: #dddddd">       
+    <h:body>   
 
         <div id="top" class="top">
 
             <ui:insert name="top">
-                <b:navBar class="nav" inverse="false" fluid="true">                        
+                <b:navBar class="nav" inverse="false" fluid="true"> 
+                    <b:navbarLinks pull="left">
+                        <b:navLink icon-awesome="list" />
+                    </b:navbarLinks>
+                    <a class="navbar-brand" href="#{request.contextPath}/faces/principal.xhtml">
+                        <b:image library="images" name="logo.jpeg" width="35" height="35" style="position: relative"/>
+                    </a>                    
                     <b:navbarLinks>       
 
                         <!-- Menú -->
-                        <b:dropMenu value="Menú" icon-awesome="fa-leanpub">
-                            <b:navLink value="Comidas típicas" href="#"/>
-                            <b:navLink value="Casados" href="#"/>
-                            <b:navLink value="Comida saludable" href="#"/>
-                           
-                        </b:dropMenu>
-                        
+                        <b:navLink value="Menú" icon-awesome="fa-leanpub" href="#{request.contextPath}/faces/menu/menu.xhtml"/>                            
+
+
+
                         <!-- Sucursales -->
                         <b:dropMenu value="Sucursales" icon-awesome="fa-home">
                             <b:navLink value="San José" href="#"/>
                             <b:navLink value="Cartago" href="#"/>
                             <b:navLink value="Heredia" href="#"/>
                         </b:dropMenu> 
-                        
+
                         <!-- Pedidos -->
                         <b:dropMenu value="Pedidos" icon-awesome="fa-cart-plus">
                             <b:navLink value="Realizar Pedido" href="#{request.contextPath}/faces/pedidos/realizarPedido.xhtml"/>                            
                         </b:dropMenu>
-                        
+
                         <!-- Usuarios -->
-                        <b:dropMenu value="Usuarios" icon-awesome="fa-group" rendered="#{usuarioController.show}">
+                        <b:dropMenu value="Usuarios" icon-awesome="users" rendered="#{usuarioController.show}">
                             <b:navLink value="Lista de usuarios" href="#{request.contextPath}/faces/usuarios/listaUsuarios.xhtml"/>
                             <b:navLink value="Buscar Usuarios" href="#{request.contextPath}/faces/usuarios/buscarUsuario.xhtml"/>
                         </b:dropMenu> 
-                        
+
                         <!-- Reportes -->
                         <b:dropMenu value="Reportes" icon-awesome="fa-newspaper-o" rendered="#{usuarioController.show}">
                             <b:navLink value="Usuario" href="#{request.contextPath}/faces/usuarios/reporte/reporteUsuario.xhtml"/>
                         </b:dropMenu> 
-                        
+
                         <!-- Gráfico -->                        
-                            <b:navLink value="Gráfico" icon-awesome="fa-pie-chart" href="#{request.contextPath}/faces/dashboard/grafico06.xhtml"
-                                       rendered="#{usuarioController.show}"/> 
+                        <b:navLink value="Gráfico" icon-awesome="fa-pie-chart" href="#{request.contextPath}/faces/dashboard/grafico06.xhtml"
+                                   rendered="#{usuarioController.show}"/> 
 
                         <!-- Respaldo -->                        
-                            <b:navLink value="Respaldo" icon-awesome="fa-save" href="#{request.contextPath}/faces/respaldo/respaldo.xhtml"
-                                       rendered="#{usuarioController.show}"/>                       
+                        <b:navLink value="Respaldo" icon-awesome="fa-save" href="#{request.contextPath}/faces/respaldo/respaldo.xhtml"
+                                   rendered="#{usuarioController.show}"/>                       
                     </b:navbarLinks>
 
-                    <b:navbarLinks pull="right" style-class="hidden-xs">                           
+                    <b:navbarLinks pull="right" style-class="hidden-xs">      
+
+                        <b:navLink value="Carrito" icon-awesome="shopping-cart"/>                                                   
+
                         <b:dropMenu value="Cuenta" icon-awesome="fa-user">                            
-                            <b:navLink value="Editar perfil" href="#{request.contextPath}/faces/usuarios/editarUsuarios.xhtml"/>
-                            <b:navLink value="Cerrar Sesión" action="#{usuarioController.logout()}"/>
+                            <b:navLink value="Editar perfil" icon-awesome="user-edit" href="#{request.contextPath}/faces/usuarios/editarUsuarios.xhtml"/>                            
                         </b:dropMenu>
                         <b:dropMenu value="" icon-awesome="fa-cog">
-                        </b:dropMenu>                                                                          
+                        </b:dropMenu>   
+                        <b:navLink value="Cerrar Sesión" icon-awesome="sign-out" action="#{usuarioController.logout()}"/>
                     </b:navbarLinks>
                 </b:navBar> 
             </ui:insert>
