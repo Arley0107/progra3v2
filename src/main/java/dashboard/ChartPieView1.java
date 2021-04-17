@@ -8,8 +8,13 @@ package dashboard;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.annotation.PostConstruct;
 import org.primefaces.model.chart.PieChartModel;
+import model.Conexion;
+
 /**
  *
  * @author wmolina
@@ -17,8 +22,12 @@ import org.primefaces.model.chart.PieChartModel;
 @Named(value = "chartPieView1")
 @SessionScoped
 public class ChartPieView1 implements Serializable {
+
+    private final String SQL_GETFEMALE = "SELECT genero,Count(*) total FROM usuario where genero='F'";
+    private final String SQL_GETMALE = "SELECT genero,Count(*) total FROM usuario where genero='M'";
+
     private PieChartModel pieModel1;
- 
+
     @PostConstruct
     public void init() {
         createPieModels();
@@ -27,22 +36,39 @@ public class ChartPieView1 implements Serializable {
     public PieChartModel getPieModel1() {
         return pieModel1;
     }
- 
+
     private void createPieModels() {
         createPieModel1();
     }
- 
+
     private void createPieModel1() {
         pieModel1 = new PieChartModel();
- 
-        pieModel1.set("Brand 1", 540);
-        pieModel1.set("Brand 2", 325);
-        pieModel1.set("Brand 3", 702);
-        pieModel1.set("Brand 4", 421);
- 
+
+        try {
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETFEMALE);
+            ResultSet rs = sentencia.executeQuery();
+
+            while (rs.next()) {
+                pieModel1.set(rs.getString("genero"), rs.getInt("total"));
+            }
+        } catch (SQLException ex) {
+
+        }
+
+        try {
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETMALE);
+            ResultSet rs = sentencia.executeQuery();
+
+            while (rs.next()) {
+                pieModel1.set(rs.getString("genero"), rs.getInt("total"));
+            }
+        } catch (SQLException ex) {
+
+        }
+
         pieModel1.setTitle("Simple Pie");
         pieModel1.setLegendPosition("w");
         pieModel1.setShadow(false);
     }
-  
+
 }

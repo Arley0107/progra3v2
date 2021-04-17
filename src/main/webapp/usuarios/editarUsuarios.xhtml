@@ -14,6 +14,22 @@
                     <b:container fluid="true">
                         <b:panel title="Edita Usuario" look="warning" collapsible="false">
                             
+                            <!-- id -->
+                            <b:row tooltip="El id no se modifica">
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Id" for="id"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:inputText id="id"
+                                                 value="#{usuarioController.id}"
+                                                 readonly="true"
+                                                 />
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="id"/>
+                                </b:column>
+                            </b:row>
+                            
                             
                             <!-- idUsuario -->
                             <b:row tooltip="El username no se modifica">

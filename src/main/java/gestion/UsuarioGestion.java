@@ -21,7 +21,7 @@ public class UsuarioGestion {
     private static final String SQL_GETUSUARIOS = "Select * from usuario";
     private static final String SQL_GETUSUARIO = "Select * from usuario where id=? and idUsuario=?";
     private static final String SQL_INSERTUSUARIO = "Insert into usuario(idUsuario,pwUsuario,nombre,apellido1,apellido2,correo,celular,genero,domicilio)values(?,MD5(?),?,?,?,?,?,?,?)";
-    private static final String SQL_UPDATEUSUARIO = "Update usuario set idUsuario=?,pwUsuario=?,nombre=?,apellido1=?,apellido2=?,correo=?,celular=?,genero=?,domicilio=? where id=? and idUsuario=?";
+    private static final String SQL_UPDATEUSUARIO = "Update usuario set pwUsuario=MD5(?),nombre=?,apellido1=?,apellido2=?,correo=?,celular=?,genero=?,domicilio=? where id=? and idUsuario=?";
     private static final String SQL_DELETEUSUARIO = "Delete from usuario where idUsuario=?";
     private static final String SQL_GETUSUARIOREPORTE = "SELECT * FROM usuario where idUsuario=?";
               
@@ -80,11 +80,12 @@ public class UsuarioGestion {
         return list;
     }
 
-    public static Usuario getUsuario(String idUsuario) {
+    public static Usuario getUsuario(int id, String idUsuario) {
         Usuario usuario = null;
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETUSUARIO);
-            sentencia.setString(1, idUsuario);
+            sentencia.setInt(1, id);
+            sentencia.setString(2, idUsuario);
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 usuario = new Usuario(
@@ -127,16 +128,17 @@ public class UsuarioGestion {
 
     public static boolean updateUsuario(Usuario usuario) {
         try {
-            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_UPDATEUSUARIO);                        
-            sentencia.setString(1, usuario.getIdUsuario());
-            sentencia.setString(2, usuario.getPwUsuario());            
-            sentencia.setString(3, usuario.getNombre());
-            sentencia.setString(4, usuario.getApellido1());
-            sentencia.setString(5, usuario.getApellido2());
-            sentencia.setString(6, usuario.getCorreo());
-            sentencia.setString(7, usuario.getCelular());
-            sentencia.setString(8, "" + usuario.getGenero());
-            sentencia.setString(9, usuario.getDomicilio());
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_UPDATEUSUARIO);                                    
+            sentencia.setString(1, usuario.getPwUsuario());            
+            sentencia.setString(2, usuario.getNombre());
+            sentencia.setString(3, usuario.getApellido1());
+            sentencia.setString(4, usuario.getApellido2());
+            sentencia.setString(5, usuario.getCorreo());
+            sentencia.setString(6, usuario.getCelular());
+            sentencia.setString(7, "" + usuario.getGenero());
+            sentencia.setString(8, usuario.getDomicilio());
+            sentencia.setInt(9, usuario.getId());
+            sentencia.setString(10, usuario.getIdUsuario());
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioGestion.class.getName()).log(Level.SEVERE, null, ex);

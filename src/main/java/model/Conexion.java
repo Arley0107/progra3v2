@@ -16,6 +16,15 @@ public class Conexion {
     private static final String DBURL = "jdbc:mysql://localhost:3306/mariannsfood?zeroDateTimeBehavior=CONVERT_TO_NULL";
     private static Connection conn = null;
 
+    public static Connection getConn() {
+        return conn;
+    }
+
+    public static void setConn(Connection conn) {
+        Conexion.conn = conn;
+    }
+        
+
     private Conexion() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();

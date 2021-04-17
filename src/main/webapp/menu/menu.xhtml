@@ -2,7 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:b="http://bootsfaces.net/ui">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <h:head>
+        <title>Menú</title>
+    </h:head>
 
     <body>
 
@@ -13,6 +18,13 @@
             </ui:define>
 
         </ui:composition>
-
+        
+        <b:image library="images" name="salmon.jpeg" style="align-content: center"/>
+        <b:image library="images" name="burritos.jpeg" tooltip="burritos saludables acompañados de ensalada" 
+                 tooltipPosition="right" style="align-content: center"/>
+        <b:image library="images" name="huevo.jpeg" tooltip="huevo picado con jamón acompañado de tostadas con aguacate y fresas" 
+                 tooltipPosition="right" style="align-content: center"/>
+        <b:image library="images" name="pescado_y_tortasDePollo.jpeg" tooltip="filet de pescado o tortas de pollo" 
+                 tooltipPosition="right" style="align-content: center"/>
     </body>
 </html>

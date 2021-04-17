@@ -13,7 +13,7 @@
         <script>
             function openNav() {
                 document.getElementById("mySidenav").style.width = "250px";
-                document.getElementById("main").style.marginLeft = "250px";                
+                document.getElementById("main").style.marginLeft = "250px";
             }
         </script>
         <script>
@@ -76,24 +76,34 @@
                         </b:dropMenu> 
 
                         <!-- Gráfico -->                        
-                        <b:navLink value="Gráfico" icon-awesome="fa-pie-chart" href="#{request.contextPath}/faces/dashboard/grafico06.xhtml"
+                        <b:navLink value="Gráfico" 
+                                   icon-awesome="fa-pie-chart" 
+                                   href="#{request.contextPath}/faces/dashboard/grafico06.xhtml"
                                    rendered="#{usuarioController.show}"/> 
 
                         <!-- Respaldo -->                        
-                        <b:navLink value="Respaldo" icon-awesome="fa-save" href="#{request.contextPath}/faces/respaldo/respaldo.xhtml"
+                        <b:navLink value="Respaldo" 
+                                   icon-awesome="fa-save" 
+                                   href="#{request.contextPath}/faces/respaldo/respaldo.xhtml"
                                    rendered="#{usuarioController.show}"/>                       
                     </b:navbarLinks>
 
                     <b:navbarLinks pull="right" style-class="hidden-xs">      
 
-                        <b:navLink value="Carrito" icon-awesome="shopping-cart"/>                                                   
+                        <b:navLink value="Carrito" 
+                                   icon-awesome="shopping-cart"/>                                                   
 
-                        <b:dropMenu value="Cuenta" icon-awesome="fa-user">                            
-                            <b:navLink value="Editar perfil" icon-awesome="user-edit" href="#{request.contextPath}/faces/usuarios/editarUsuarios.xhtml"/>                            
-                        </b:dropMenu>
-                        <b:dropMenu value="" icon-awesome="fa-cog">
-                        </b:dropMenu>   
-                        <b:navLink value="Cerrar Sesión" icon-awesome="sign-out" action="#{usuarioController.logout()}"/>
+                        <b:dropMenu value="Cuenta" 
+                                    icon-awesome="fa-user">  
+                            <h:form>
+                                <b:navCommandLink value="Editar perfil" 
+                                                 icon-awesome="user-edit" 
+                                                 action="#{usuarioController.editaUsuario(usuario.id, usuario.idUsuario)}"/>                            
+                            </h:form>
+                        </b:dropMenu>                        
+                        <b:navLink value="Cerrar Sesión" 
+                                   icon-awesome="sign-out" 
+                                   action="#{usuarioController.logout()}"/>
                     </b:navbarLinks>
                 </b:navBar> 
             </ui:insert>

@@ -84,9 +84,10 @@ public class UsuarioController extends Usuario implements Serializable {
         return UsuarioGestion.getUsuarios();
     }
 
-    public String editaUsuario(String idUsuario) {
-        Usuario u = UsuarioGestion.getUsuario(idUsuario);
-        if (u != null) {
+    public String editaUsuario(int id, String idUsuario) {
+        Usuario u = UsuarioGestion.getUsuario(id,idUsuario);
+        if (u != null) {    
+            this.setId(u.getId());
             this.setIdUsuario(u.getIdUsuario());
             this.setPwUsuario(u.getPwUsuario());
             this.setNombre(u.getNombre());
@@ -129,11 +130,15 @@ public class UsuarioController extends Usuario implements Serializable {
 
     public String logout() {
         String respuesta = "principal.xhtml";
-        if (Conexion.getConexion() != null) {
+        try {
+            ((HttpSession) FacesContext.getCurrentInstance().getExternalContext()
+                    .getSession(true)).invalidate();
+            Conexion.setConn(null);
             respuesta = "index.xhtml";
+        } catch (Exception ex) {
+
         }
         return respuesta;
-
     }
 
     public String insertaUsuario() {
