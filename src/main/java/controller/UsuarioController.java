@@ -128,17 +128,11 @@ public class UsuarioController extends Usuario implements Serializable {
         }
     }
 
-    public String logout() {
-        String respuesta = "principal.xhtml";
-        try {
+    public String logout() {        
             ((HttpSession) FacesContext.getCurrentInstance().getExternalContext()
-                    .getSession(true)).invalidate();
-            Conexion.setConn(null);
-            respuesta = "index.xhtml";
-        } catch (Exception ex) {
-
-        }
-        return respuesta;
+                    .getSession(false)).invalidate();
+            // Conexion.setConn(null);
+            return "index.xhtml";        
     }
 
     public String insertaUsuario() {

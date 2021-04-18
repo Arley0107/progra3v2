@@ -13,7 +13,7 @@ public class Conexion {
 
     //jdbc:mysql://localhost:3306/mariannsfood?serverTimezone=UTC
     private static Conexion conexion;
-    private static final String DBURL = "jdbc:mysql://localhost:3306/mariannsfood?zeroDateTimeBehavior=CONVERT_TO_NULL";
+    private static final String DBURL = "jdbc:mysql://localhost:3306/mariannsfood?serverTimezone=UTC";
     private static Connection conn = null;
 
     public static Connection getConn() {
