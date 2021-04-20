@@ -4,6 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
     <h:head>
         <title>Login</title>
         <style>            
@@ -17,7 +19,9 @@
                 margin-left: -200px;
                 margin-top: -150px
             }            
-        </style>
+        </style> 
+        <h:outputScript library="js" name="script.js" />
+
     </h:head>
     <h:body>
 
@@ -42,7 +46,7 @@
                         <b:message for="usuario"/>
                     </b:column>
                 </b:row>
-                
+
                 <b:row tooltip="Digite el password correspondiente">
                     <b:column medium-screen="1"/>
                     <b:column medium-screen="10"/>
@@ -66,6 +70,7 @@
                     <b:column medium-screen="1"/>
                     <b:column medium-screen="10"/>
                     <b:commandButton value="Iniciar sesión"
+                                     id="loginButton"
                                      icon-awesome="sign-in"
                                      look="success"
                                      style="width: 100%"
