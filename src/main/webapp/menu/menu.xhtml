@@ -4,7 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
-    
+
     <h:head>
         <title>Menú</title>
     </h:head>
@@ -12,19 +12,121 @@
     <body>
 
         <ui:composition template="./../resources/templates/plantilla.xhtml">
-
             <ui:define name="content">
-                <b:button icon-awesome="fa-cart-plus" look="success"/>
-            </ui:define>
 
+                <!-- Menú hamburguesas -->
+                <b:panel title="Hamburguesas" look="primary" collapsible="false">
+                    <b:row>
+                        <b:column medium-screen="3">
+                            <div class="card" style="width: 18rem;">
+                                <a href="#">
+                                   <img alt="Qries" src="https://homeburgers.com/uploads/product/054bb48d12d44687b47c00b41ab31097/hs5.jpg"
+                                   width="100%" height="100%"/>
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title" style="font-weight: bold">Hamburguesa sencilla</h5>
+                                    <p class="card-text">Hamburguesa con una torta de carne, lechuga, tomate y salsas</p>                                 
+                                </div>
+                            </div>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <div class="card" style="width: 18rem;">
+                                <a href="#">
+                                   <img alt="dfdf" src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2018/09/receta-super-facil-de-carne-para-hamburguesa-suave.jpg"
+                                   width="110%" height="180px"/>
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title" style="font-weight: bold">Hamburguesa con queso</h5>
+                                    <p class="card-text">Hamburguesa con una torta de carne, queso, lechuga, tomate y salsas</p>
+                                </div>
+                            </div>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <div class="card" style="width: 18rem;">
+                                <b:image library="images" name="salmon.jpeg" style="align-content: center" width="100px" height="80%"/>
+                                <div class="card-body">
+                                    <h5 class="card-title" style="font-weight: bold">Cuarto de libra</h5>
+                                    <p class="card-text">Hamburguesa con dos tortas, queso doble, pepinillos, cebolla, salsas</p>
+                                </div>
+                            </div>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <div class="card" style="width: 18rem;">
+                                <b:image library="images" name="salmon.jpeg" style="align-content: center" width="100px" height="80%"/>
+                                <div class="card-body">
+                                    <h5 class="card-title" style="font-weight: bold">Hamburguesa Mariann´s</h5>
+                                    <p class="card-text">Hamburguesa con doble pan, tres tortas de carne, salchicha, queso, jamón, lechuga, tomate y salsas a escoger</p>
+
+                                </div>
+                            </div>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column medium-screen="3">
+                            <a><b:button value="Ordenar - ¢1200" icon-awesome="fa-cart-plus" look="success"/></a>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <a><b:button value="Ordenar - ¢1500" icon-awesome="fa-cart-plus" look="success"/></a>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <a><b:button value="Ordenar - ¢1800" icon-awesome="fa-cart-plus" look="success"/></a>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <a><b:button value="Ordenar - ¢2000" icon-awesome="fa-cart-plus" look="success"/></a>
+                        </b:column>
+                    </b:row>
+                </b:panel>
+
+                <!-- Menú casados -->
+                <b:panel title="Casados" look="primary" collapsible="false">
+                    <b:row>
+                        <b:column medium-screen="3">
+                            <div class="card" style="width: 18rem;">
+                                <b:image library="images" name="salmon.jpeg" style="align-content: center" width="100px" height="80%"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a><b:button value="Ordenar" icon-awesome="fa-cart-plus" look="success"/></a>
+                                </div>
+                            </div>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <div class="card" style="width: 18rem;">
+                                <b:image library="images" name="salmon.jpeg" style="align-content: center" width="100px" height="80%"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a><b:button value="Ordenar" icon-awesome="fa-cart-plus" look="success"/></a>
+                                </div>
+                            </div>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <div class="card" style="width: 18rem;">
+                                <b:image library="images" name="salmon.jpeg" style="align-content: center" width="100px" height="80%"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a><b:button value="Ordenar" icon-awesome="fa-cart-plus" look="success"/></a>
+                                </div>
+                            </div>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <div class="card" style="width: 18rem;">
+                                <b:image library="images" name="salmon.jpeg" style="align-content: center" width="100px" height="80%"/>
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a><b:button value="Ordenar" icon-awesome="fa-cart-plus" look="success"/></a>
+                                </div>
+                            </div>
+                        </b:column>
+                    </b:row>
+                </b:panel>
+
+
+            </ui:define>
         </ui:composition>
-        
-        <b:image library="images" name="salmon.jpeg" style="align-content: center"/>
-        <b:image library="images" name="burritos.jpeg" tooltip="burritos saludables acompañados de ensalada" 
-                 tooltipPosition="right" style="align-content: center"/>
-        <b:image library="images" name="huevo.jpeg" tooltip="huevo picado con jamón acompañado de tostadas con aguacate y fresas" 
-                 tooltipPosition="right" style="align-content: center"/>
-        <b:image library="images" name="pescado_y_tortasDePollo.jpeg" tooltip="filet de pescado o tortas de pollo" 
-                 tooltipPosition="right" style="align-content: center"/>
+
+
     </body>
 </html>
