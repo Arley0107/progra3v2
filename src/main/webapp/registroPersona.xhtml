@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Registrarse</title>
+
+        <style>    
+            #ingresaPersonaForm{
+                padding-top: 75px
+            }                                     
+        </style>
+    </h:head>
+    <h:body>
+
+        <h:form id="ingresaPersonaForm">
+            <b:container fluid="true">
+                <b:panel title="Registro de Usuario" look="primary" collapsible="false">  
+
+                    <!-- idPersona -->
+                    <b:row>
+                        <b:column medium-screen="2">
+                            <h:outputLabel value="idPersona" for="idPersona" />
+                        </b:column>
+                        <b:column medium-screen="4">
+                            <b:inputText placeholder="idPersona"                                                 
+                                         required="true"
+                                         id="idCliente" 
+                                         value="#{personaController.idPersona}"                                                 
+                                         />
+                        </b:column>
+                        <b:column medium-screen="6" style-class="message">
+                            <b:message for="idPersona"/>
+                        </b:column>
+                    </b:row>
+
+                    <!-- Nombre -->
+                    <b:row>
+                        <b:column medium-screen="2">
+                            <h:outputText value="Nombre" />
+                        </b:column>
+                        <b:column medium-screen="4">
+                            <b:inputText placeholder="Nombre" 
+                                         id="nombre" 
+                                         required="true"
+                                         value="#{personaController.nombre}"
+                                         />
+                        </b:column>
+                        <b:column medium-screen="6" style-class="message">
+                            <b:message for="nombre"/>
+                        </b:column>
+                    </b:row>
+
+                    <!-- Primer apellido -->
+                    <b:row>
+                        <b:column medium-screen="2">
+                            <h:outputText value="Primer apellido" />
+                        </b:column>
+                        <b:column medium-screen="4">
+                            <b:inputText placeholder="Primer apellido" 
+                                         id="apellido1" 
+                                         required="true"
+                                         value="#{personaController.apellido1}"
+                                         />
+                        </b:column>
+                        <b:column medium-screen="6" style-class="message">
+                            <b:message for="apellido1"/>
+                        </b:column>
+                    </b:row>
+
+                    <!-- Segundo apellido -->
+                    <b:row>
+                        <b:column medium-screen="2">
+                            <h:outputText value="Segundo apellido" />
+                        </b:column>
+                        <b:column medium-screen="4">
+                            <b:inputText placeholder="Segundo apellido" 
+                                         id="apellido2" 
+                                         required="true"
+                                         value="#{personaController.apellido2}"
+                                         />
+                        </b:column>
+                        <b:column medium-screen="6" style-class="message">
+                            <b:message for="apellido2"/>
+                        </b:column>
+                    </b:row>
+
+                    <!-- Celular -->
+                    <b:row>
+                        <b:column medium-screen="2">
+                            <h:outputText value="Celular" />
+                        </b:column>
+                        <b:column medium-screen="4">
+                            <b:inputText placeholder="Celular" 
+                                         id="celular" 
+                                         required="true"
+                                         value="#{personaController.celular}"
+                                         />
+                        </b:column>
+                        <b:column medium-screen="6" style-class="message">
+                            <b:message for="celular"/>
+                        </b:column>
+                    </b:row>
+
+                    <!-- Genero -->
+                    <b:row>
+                        <b:column medium-screen="2">
+                            <h:outputLabel value="Género" for="genero"/>
+                        </b:column>
+                        <b:column medium-screen="4">
+                            <b:panelGrid columns="2">
+                                <b:radiobutton value="#{personaController.genero}"
+                                               itemLabel="Masculino" itemValue="M"/>
+                                <b:radiobutton value="#{personaController.genero}"
+                                               itemLabel="Femenino" itemValue="F"/>
+                                <b:radiobutton value="#{personaController.genero}"
+                                               itemLabel="Otro" itemValue="O"/>
+                            </b:panelGrid>
+                        </b:column>
+                        <b:column medium-screen="6" style-class="message">
+                            <b:message for="genero"/>
+                        </b:column>
+                    </b:row>
+
+                    <!-- Domicilio -->
+                    <b:row tooltip="Digite su dirección">
+                        <b:column medium-screen="2">
+                            <h:outputLabel value="Domicilio" for="domicilio" />
+                        </b:column>
+                        <b:column medium-screen="4">
+                            <b:inputText placeholder="Dirección" id="domicilio" required="true"
+                                         value="#{personaController.domicilio}"                                                 
+                                         />
+                        </b:column>
+                        <b:column medium-screen="6" style-class="message">
+                            <b:message for="domicilio"/>
+                        </b:column>
+                    </b:row>                                                
+
+                    <b:row>                        
+                        <b:column medium-screen="2">
+                            <b:commandButton value="Limpiar"                                                                                                          
+                                             look="primary"
+                                             style="width: 100%"
+                                             type="reset"/>                                    
+                        </b:column>
+                        <b:column medium-screen="4">                                   
+                            <b:commandButton value="Ingresar"
+                                             look="success"
+                                             style="width: 33%"
+                                             action="#{personaController.insertaPersona()}"                                             
+                                             >
+                            </b:commandButton>                                    
+                        </b:column>     
+
+                    </b:row>
+                </b:panel> 
+            </b:container>
+        </h:form>
+
+    </h:body>
+</html>

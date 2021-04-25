@@ -64,14 +64,14 @@
                             <b:navLink value="Realizar Pedido" href="#{request.contextPath}/faces/pedidos/realizarPedido.xhtml"/>                            
                         </b:dropMenu>
 
-                        <!-- Usuarios -->
-                        <b:dropMenu value="Usuarios" icon-awesome="users" rendered="#{usuarioController.show}">
-                            <b:navLink value="Lista de usuarios" href="#{request.contextPath}/faces/usuarios/listaUsuarios.xhtml"/>
+                        <!-- Personas -->
+                        <b:dropMenu value="Personas" icon-awesome="users" rendered="#{empleadoController.show}">
+                            <b:navLink value="Lista de personas" href="#{request.contextPath}/faces/personas/listaPersonas.xhtml"/>
                             <b:navLink value="Buscar Usuarios" href="#{request.contextPath}/faces/usuarios/buscarUsuario.xhtml"/>
                         </b:dropMenu> 
 
                         <!-- Reportes -->
-                        <b:dropMenu value="Reportes" icon-awesome="fa-newspaper-o" rendered="#{usuarioController.show}">
+                        <b:dropMenu value="Reportes" icon-awesome="fa-newspaper-o" rendered="#{empleadoController.show}">
                             <b:navLink value="Usuario" href="#{request.contextPath}/faces/usuarios/reporte/reporteUsuario.xhtml"/>
                         </b:dropMenu> 
 
@@ -79,13 +79,13 @@
                         <b:navLink value="Gráfico" 
                                    icon-awesome="fa-pie-chart" 
                                    href="#{request.contextPath}/faces/dashboard/grafico06.xhtml"
-                                   rendered="#{usuarioController.show}"/> 
+                                   rendered="#{empleadoController.show}"/> 
 
                         <!-- Respaldo -->                        
                         <b:navLink value="Respaldo" 
                                    icon-awesome="fa-save" 
                                    href="#{request.contextPath}/faces/respaldo/respaldo.xhtml"
-                                   rendered="#{usuarioController.show}"/>                       
+                                   rendered="#{empleadoController.show}"/>                       
                     </b:navbarLinks>
 
                     <b:navbarLinks pull="right" style-class="hidden-xs">      

@@ -12,44 +12,44 @@
             <ui:define name="content">
                 <h:form>
                     <b:container fluid="true">
-                        <b:panel title="Lista De Usuarios" look="primary" collapsible="true">
-                            <b:dataTable value="#{usuarioController.usuarios}"
-                                         var="usuario"
+                        <b:panel title="Lista De Personas" look="primary" collapsible="true">
+                            <b:dataTable value="#{personaController.personas}"
+                                         var="persona"
                                          excel="true"
                                          csv="true"
                                          pdf="true"
                                          columnVisibility="true"
                                          copy="true"
                                          print="true">                                
-                                <b:dataTableColumn value="#{usuario.nombre}" 
+                                <b:dataTableColumn value="#{persona.idPersona}" 
+                                                   label="id"
+                                                   width="5%"
+                                                   />                                
+                                <b:dataTableColumn value="#{persona.nombre}" 
                                                    label="Nombre"
                                                    width="10%"
-                                                   />                                
-                                <b:dataTableColumn value="#{usuario.apellido1}" 
+                                                   />
+                                <b:dataTableColumn value="#{persona.apellido1}" 
                                                    label="P. Apellido"
                                                    width="10%"
                                                    />
-                                <b:dataTableColumn value="#{usuario.apellido2}" 
-                                                   label="S. Apellido"
-                                                   width="10%"
-                                                   />
-                                <b:dataTableColumn value="#{usuario.correo}" 
-                                                   label="Email"
+                                <b:dataTableColumn value="#{persona.apellido2}" 
+                                                   label="S. apellido"
                                                    width="19%"
                                                    />
-                                <b:dataTableColumn value="#{usuario.celular}" 
+                                <b:dataTableColumn value="#{persona.celular}" 
                                                    label="Celular"
                                                    width="10%"
                                                    />
-                                <b:dataTableColumn value="#{usuario.genero}" 
+                                <b:dataTableColumn value="#{persona.genero}" 
                                                    label="Género"
                                                    width="5%"
                                                    />   
-                                <b:dataTableColumn value="#{usuario.domicilio}" 
+                                <b:dataTableColumn value="#{persona.domicilio}" 
                                                    label="Domicilio"
                                                    width="20%"
                                                    />                                                                                            
-                            </b:dataTable>
+                            </b:dataTable>                            
                         </b:panel>
                     </b:container>                    
                 </h:form>

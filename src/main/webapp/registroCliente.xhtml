@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registrarse</title>
+        
+        <style>    
+            #ingresaClienteForm{
+                padding-top: 75px
+            }                                     
+        </style>
+    </h:head>
+    <h:body>
+        
+        <h:form id="ingresaClienteForm">
+                <b:container fluid="true">
+                    <b:panel title="Registro de Usuario" look="primary" collapsible="false">                                                  
+                        
+                        <!-- idCliente -->
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputLabel value="idCliente" for="idCliente" />
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="idCliente"                                                 
+                                             required="true"
+                                             id="idCliente" 
+                                             value="#{clienteController.idCliente}"                                                 
+                                             />
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="idCliente"/>
+                            </b:column>
+                        </b:row>
+                        
+                        <!-- idCliente -->
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputLabel value="idPersona" for="idPersona" />
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputText placeholder="idPersona"                                                 
+                                             required="true"
+                                             id="idPersona" 
+                                             value="#{clienteController.idPersona}"                                                 
+                                             />
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="idPersona"/>
+                            </b:column>
+                        </b:row>                                                
+
+                        <!-- Contraseña -->
+                        <b:row tooltip="La contraseña la necesitarás para ingresar al sistema">
+                            <b:column medium-screen="2">
+                                <h:outputLabel value="Contraseña" for="pwUsuario" />
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:inputSecret placeholder="Contraseña"
+                                               id="pwUsuario"
+                                               required="true"
+                                               autocomplete="true"
+                                               value="#{clienteController.pwUsuario}">                        
+                                </b:inputSecret>                                
+                            </b:column>
+                            <b:column medium-screen="6" style-class="message">
+                                <b:message for="pwUsuario"/>
+                            </b:column>
+                        </b:row>                        
+                        
+                        <!-- Correo -->
+                        <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Correo" for="correo"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="Correo"
+                                                 required="true"  
+                                                 mask="email"
+                                                 id="correo"
+                                                 value="#{clienteController.correo}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="correo"/>
+                                </b:column>
+                            </b:row>
+                                                
+                        <b:row>
+                            <b:column medium-screen="2"/>
+                            <b:column medium-screen="3">
+                                <p:captcha label="Check"/>
+                            </b:column>
+                            <b:column medium-screen="2">
+                                <b:commandButton value="Limpiar"                                                                                                          
+                                                 look="primary"
+                                                 style="width: 100%"
+                                                 type="reset"/>                                    
+                            </b:column>
+                            <b:column medium-screen="4">                                   
+                                <b:commandButton value="Ingresar"
+                                                 look="success"
+                                                 style="width: 33%"
+                                                 action="#{clienteController.insertaCliente()}"
+                                                 >
+                                </b:commandButton>                                    
+                            </b:column>     
+
+                        </b:row>
+                    </b:panel> 
+                </b:container>
+            </h:form>
+        
+    </h:body>
+</html>
+

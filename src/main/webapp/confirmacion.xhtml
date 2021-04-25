@@ -17,17 +17,17 @@
     </h:head>
     <h:body>
         <b:container fluid="true">
-            <b:panel id="x" title="Usuario Creado satisfactoriamente" look="primary">
+            <b:panel id="x" title="Usuario creado satisfactoriamente" look="primary">
                         <b:row>
                             <b:column medium-screen="3">
                                 <h:outputLabel value="Mantenga este código QR en caso de futuras transacciones en Mariann´s Food"/>
                             </b:column>
                             <b:column medium-screen="3">
-                                <p:barcode type="qr" value="#{usuarioController.toString()}" width="350px"/>   
+                                <p:barcode type="qr" value="#{clienteController.toString()}" width="350px"/>   
                                 <b:button value="Ir a iniciar sesión"
                                      look="primary"
                                      style="width: 100%"
-                                     href="#{request.contextPath}/faces/index.xhtml"/>  
+                                     href="#{request.contextPath}/faces/clienteLogin.xhtml"/>  
                             </b:column>
                         </b:row>
                     </b:panel>

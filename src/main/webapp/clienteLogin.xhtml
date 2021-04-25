@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Iniciar sesión</title>
+        <style>            
+            .centrado{
+                position: absolute;
+                top: 50% ;
+                left: 50% ;
+                width: 400px;
+                height: 200px;
+                margin: auto;
+                margin-left: -200px;
+                margin-top: -150px
+            }            
+        </style> 
+    </h:head>
+    <h:body>
+        <b:image library="images" name="logo_background.jpeg" style="align-content: center"/>
+
+        <h:form id="clienteLoginForm">
+
+            <b:panel style="height: 280px" title="Iniciar sesión" look="success" collapsed="false" style-class="centrado">
+                <b:row tooltip="Digite el usuario correspondiente">
+                    <b:column medium-screen="1"/>
+                    <b:column medium-screen="10"/>
+                    <b:inputText placeholder="Correo electrónico"
+                                 id="correo"
+                                 required="true"
+                                 autocomplete="true"
+                                 value="#{clienteController.correo}">
+                        <f:facet name="prepend">
+                            <b:icon name="user"/>
+                        </f:facet>
+                    </b:inputText>
+                    <b:column medium-screen="1" style-class="message">
+                        <b:message for="correo"/>
+                    </b:column>
+                </b:row>
+
+                <b:row tooltip="Digite el password correspondiente">
+                    <b:column medium-screen="1"/>
+                    <b:column medium-screen="10"/>
+                    <b:inputSecret placeholder="Clave"
+                                   id="clave"
+                                   required="true"
+                                   autocomplete="true"
+                                   value="#{clienteController.pwUsuario}">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="key"/>
+                        </f:facet>
+                    </b:inputSecret>
+                    <!--<b:column medium-screen="3">
+                        <p:captcha label="Check"/>
+                    </b:column> -->
+                    <b:column medium-screen="1" style-class="message">
+                        <b:message for="clave"/>
+                    </b:column>
+                </b:row>
+                <b:row>
+                    <b:column medium-screen="1"/>
+                    <b:column medium-screen="10"/>
+                    <b:commandButton value="Iniciar sesión"
+                                     id="loginButton"
+                                     icon-awesome="sign-in"
+                                     look="success"
+                                     style="width: 100%"
+                                     action="#{clienteController.cliente()}"/>                       
+                    <b:button value="¿Eres nuevo usuario? Regístrate"
+                              look="primary"
+                              style="width: 100%"
+                              href="#{request.contextPath}/faces/registroPersona.xhtml"
+                              />
+                </b:row>
+
+            </b:panel>
+
+        </h:form>
+    </h:body>
+</html>
+

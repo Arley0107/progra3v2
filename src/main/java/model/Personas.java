@@ -1,57 +1,35 @@
 
 package model;
 
-public class Empleado {
+public class Personas {
     
-    private int id;
-    private String idEmpleado;
-    private String rol;
+    private String idPersona;
     private String nombre;
     private String apellido1;
     private String apellido2;
-    private String correo;
     private String celular;
     private char genero;
     private String domicilio;
 
-    public Empleado(int id, String idEmpleado, String rol, String nombre, String apellido1, String apellido2, String correo, String celular, char genero, String domicilio) {
-        this.id = id;
-        this.idEmpleado = idEmpleado;
-        this.rol = rol;
+    public Personas() {
+    }
+
+    public Personas(String idPersona, String nombre, String apellido1, String apellido2, String celular, char genero, String domicilio) {
+        this.idPersona = idPersona;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
-        this.correo = correo;
         this.celular = celular;
         this.genero = genero;
         this.domicilio = domicilio;
     }
 
-    public Empleado() {
+    public String getIdPersona() {
+        return idPersona;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getIdEmpleado() {
-        return idEmpleado;
-    }
-
-    public void setIdEmpleado(String idEmpleado) {
-        this.idEmpleado = idEmpleado;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setIdPersona(String idPersona) {
+        this.idPersona = idPersona;
     }
 
     public String getNombre() {
@@ -76,14 +54,6 @@ public class Empleado {
 
     public void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
     }
 
     public String getCelular() {

@@ -13,7 +13,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import model.Conexion;
-import model.Usuario;
+import model.Empleados;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -69,11 +69,11 @@ public class ReporteController implements Serializable {
 
         }
     }
-    
-    public void buscaUsuario(Usuario usuario) {
+    /** 
+    public void buscaUsuario(Empleados empleado) {
         Map<String, Object> parametrosReporte = new HashMap<>();
-        parametrosReporte.put("idUsuario", usuario.getIdUsuario());
-        parametrosReporte.put("nombre", usuario.getNombreCompleto());
+        parametrosReporte.put("idUsuario", empleado.getIdUsuario());
+        parametrosReporte.put("nombre", empleado.getNombreCompleto());
         try {
             File jasper = new File(FacesContext
                     .getCurrentInstance().
@@ -97,5 +97,8 @@ public class ReporteController implements Serializable {
             Logger.getLogger(ReporteController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    **/
+    
+    
 }

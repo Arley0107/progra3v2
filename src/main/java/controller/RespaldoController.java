@@ -1,8 +1,6 @@
 package controller;
 
 import gestion.EmpleadoGestion;
-import gestion.RepartidorGestion;
-import gestion.UsuarioGestion;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -30,9 +28,8 @@ public class RespaldoController implements Serializable {
         ZipOutputStream out = null;
         try {
 
-            String json = "Usuarios:\n\n" + UsuarioGestion.generarJson() + "\n\nEmpleados:\n\n"
-                    + EmpleadoGestion.generarJson() + "\n\nRepartidores:\n\n"
-                    + RepartidorGestion.generarJson();
+            String json = "Usuarios:\n\n" + EmpleadoGestion.generarJson() + "\n\nEmpleados:\n\n"
+                    + EmpleadoGestion.generarJson();
 
             File f = new File(FacesContext
                     .getCurrentInstance().
@@ -65,14 +62,14 @@ public class RespaldoController implements Serializable {
             FacesContext.getCurrentInstance().responseComplete();
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 out.close();
             } catch (IOException ex) {
-                Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(EmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
