@@ -12,10 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import model.Conexion;
-import org.primefaces.event.ItemSelectEvent;
 import org.primefaces.model.chart.PieChartModel;
 
 /**
@@ -28,6 +25,8 @@ public class ChartPieView2 implements Serializable {
 
     private final String SQL_GETFEMALE = "SELECT genero,Count(*) total FROM usuario where genero='F'";
     private final String SQL_GETMALE = "SELECT genero,Count(*) total FROM usuario where genero='M'";
+    private final String SQL_GETOTHER = "SELECT genero,Count(*) total FROM personas where genero='O'";
+    
     private PieChartModel pieModel2;
 
     @PostConstruct
@@ -51,7 +50,7 @@ public class ChartPieView2 implements Serializable {
             ResultSet rs = sentencia.executeQuery();
 
             while (rs.next()) {
-                pieModel2.set(rs.getString("genero"), rs.getInt("total"));
+                pieModel2.set("Femenino", rs.getInt("total"));
             }
         } catch (SQLException ex) {
 
@@ -62,7 +61,18 @@ public class ChartPieView2 implements Serializable {
             ResultSet rs = sentencia.executeQuery();
 
             while (rs.next()) {
-                pieModel2.set(rs.getString("genero"), rs.getInt("total"));
+                pieModel2.set("Masculino", rs.getInt("total"));
+            }
+        } catch (SQLException ex) {
+
+        }
+        
+        try {
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETOTHER);
+            ResultSet rs = sentencia.executeQuery();
+
+            while (rs.next()) {
+                pieModel2.set("Otro", rs.getInt("total"));
             }
         } catch (SQLException ex) {
 

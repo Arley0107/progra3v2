@@ -23,8 +23,9 @@ import model.Conexion;
 @SessionScoped
 public class ChartPieView1 implements Serializable {
 
-    private final String SQL_GETFEMALE = "SELECT genero,Count(*) total FROM usuario where genero='F'";
-    private final String SQL_GETMALE = "SELECT genero,Count(*) total FROM usuario where genero='M'";
+    private final String SQL_GETFEMALE = "SELECT genero,Count(*) total FROM personas where genero='F'";
+    private final String SQL_GETMALE = "SELECT genero,Count(*) total FROM personas where genero='M'";
+    private final String SQL_GETOTHER = "SELECT genero,Count(*) total FROM personas where genero='O'";
 
     private PieChartModel pieModel1;
 
@@ -49,7 +50,7 @@ public class ChartPieView1 implements Serializable {
             ResultSet rs = sentencia.executeQuery();
 
             while (rs.next()) {
-                pieModel1.set(rs.getString("genero"), rs.getInt("total"));
+                pieModel1.set("Femenino", rs.getInt("total"));
             }
         } catch (SQLException ex) {
 
@@ -60,7 +61,17 @@ public class ChartPieView1 implements Serializable {
             ResultSet rs = sentencia.executeQuery();
 
             while (rs.next()) {
-                pieModel1.set(rs.getString("genero"), rs.getInt("total"));
+                pieModel1.set("Masculino", rs.getInt("total"));
+            }
+        } catch (SQLException ex) {
+
+        }
+        try {
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETOTHER);
+            ResultSet rs = sentencia.executeQuery();
+
+            while (rs.next()) {
+                pieModel1.set("Otro", rs.getInt("total"));
             }
         } catch (SQLException ex) {
 

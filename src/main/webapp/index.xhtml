@@ -6,12 +6,15 @@
 
 
     <h:head>
-        <title>Mariann´s Food</title>        
+        <title>Mariann´s Food</title>          
+
     </h:head>
     <h:body>
         
-        <b:button value="Cliente" href="#{request.contextPath}/faces/clienteLogin.xhtml"/>
-        <b:button value="Admin" href="#{request.contextPath}/faces/adminLogin.xhtml"/>
+        <b:panel title="Iniciar sesión" look="default">
+            <b:button value="Cliente" href="#{request.contextPath}/faces/clienteLogin.xhtml"/>
+            <b:button value="Admin" href="#{request.contextPath}/faces/adminLogin.xhtml"/>
+        </b:panel>
 
     </h:body>
 </html>
