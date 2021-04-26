@@ -18,7 +18,7 @@ public class ClienteGestion {
 
     private static final String SQL_GETCLIENTES = "Select * from clientes";
     private static final String SQL_GETCLIENTELOGIN = "Select * from clientes where correo=? and pwUsuario=MD5(?)";
-    private static final String SQL_GETCLIENTE = "Select * from clientes where idCliente=? and idPersona=?";
+    private static final String SQL_GETCLIENTE = "Select * from clientes where idCliente=?";
     private static final String SQL_INSERTCLIENTE = "Insert into clientes(idCliente,idPersona,pwUsuario,correo)values(?,?,MD5(?),?)";
     private static final String SQL_UPDATECLIENTE = "Update clientes set pwUsuario=MD5(?),correo=? where idEmpleado=? and idPersona=?";
     private static final String SQL_DELETECLIENTE = "Delete from clientes where idCliente=?";
@@ -34,7 +34,7 @@ public class ClienteGestion {
 
             if (rs.next()) {
                 cliente = new Clientes();
-                cliente.setIdCliente(rs.getString(1));
+                cliente.setIdCliente(rs.getInt(1));
                 cliente.setIdPersona(rs.getString(2));
                 cliente.setPwUsuario(rs.getString(3));
                 cliente.setCorreo(rs.getString(4));
@@ -52,7 +52,7 @@ public class ClienteGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 list.add(new Clientes(
-                        rs.getString(1), //idCliente
+                        rs.getInt(1), //idCliente
                         rs.getString(2), //idPersona
                         rs.getString(3), //pwUsuario                                 
                         rs.getString(4) //correo
@@ -64,16 +64,15 @@ public class ClienteGestion {
         return list;
     }
 
-    public static Clientes getCliente(String idCliente, String idPersona) {
+    public static Clientes getCliente(int idCliente) {
         Clientes cliente = null;
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETCLIENTE);
-            sentencia.setString(1, idCliente);
-            sentencia.setString(2, idPersona);
+            sentencia.setInt(1, idCliente);
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 cliente = new Clientes(
-                        rs.getString(1), //idCliente
+                        rs.getInt(1), //idCliente
                         rs.getString(2), //idPersona
                         rs.getString(3), //pwUsuario                                 
                         rs.getString(4) //correo                      
@@ -87,11 +86,10 @@ public class ClienteGestion {
 
     public static boolean insertCliente(Clientes cliente) {
         try {
-            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTCLIENTE);
-            sentencia.setString(1, cliente.getIdCliente());
-            sentencia.setString(2, cliente.getIdPersona());
-            sentencia.setString(3, cliente.getPwUsuario());
-            sentencia.setString(4, cliente.getCorreo());
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTCLIENTE);           
+            sentencia.setString(1, cliente.getIdPersona());
+            sentencia.setString(2, cliente.getPwUsuario());
+            sentencia.setString(3, cliente.getCorreo());
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(ClienteGestion.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,7 +102,7 @@ public class ClienteGestion {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_UPDATECLIENTE);
             sentencia.setString(1, cliente.getPwUsuario());
             sentencia.setString(2, cliente.getCorreo());
-            sentencia.setString(3, cliente.getIdCliente());
+            sentencia.setInt(3, cliente.getIdCliente());
             sentencia.setString(4, cliente.getIdPersona());
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
@@ -116,7 +114,7 @@ public class ClienteGestion {
     public static boolean deleteCliente(Clientes cliente) {
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_DELETECLIENTE);
-            sentencia.setString(1, cliente.getIdCliente());
+            sentencia.setInt(1, cliente.getIdCliente());
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(ClienteGestion.class.getName()).log(Level.SEVERE, null, ex);
@@ -134,7 +132,7 @@ public class ClienteGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 cliente = new Clientes(
-                        rs.getString(1), //idCliente
+                        rs.getInt(1), //idCliente
                         rs.getString(2), //idPersona
                         rs.getString(3), //pwUsuario                                 
                         rs.getString(4) //correo

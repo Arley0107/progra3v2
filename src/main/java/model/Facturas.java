@@ -5,16 +5,16 @@ import java.util.Date;
 
 public class Facturas {
     
-    private String idFactura;
+    private int idFactura;
     private int codigo;
-    private String idCliente;
+    private int idCliente;
     private Date fecha;
     private Double total;
 
     public Facturas() {
     }
 
-    public Facturas(String idFactura, int codigo, String idCliente, Date fecha, Double total) {
+    public Facturas(int idFactura, int codigo, int idCliente, Date fecha, Double total) {
         this.idFactura = idFactura;
         this.codigo = codigo;
         this.idCliente = idCliente;
@@ -22,11 +22,18 @@ public class Facturas {
         this.total = total;
     }
 
-    public String getIdFactura() {
+    public Facturas(int codigo, int idCliente, Date fecha, Double total) {
+        this.codigo = codigo;
+        this.idCliente = idCliente;
+        this.fecha = fecha;
+        this.total = total;
+    }        
+
+    public int getIdFactura() {
         return idFactura;
     }
 
-    public void setIdFactura(String idFactura) {
+    public void setIdFactura(int idFactura) {
         this.idFactura = idFactura;
     }
 
@@ -38,11 +45,11 @@ public class Facturas {
         this.codigo = codigo;
     }
 
-    public String getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(String idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 

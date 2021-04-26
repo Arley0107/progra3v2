@@ -3,7 +3,7 @@ package model;
 
 public class Clientes {
     
-    private String idCliente;
+    private int idCliente;
     private String idPersona;
     private String pwUsuario;
     private String correo;
@@ -11,18 +11,18 @@ public class Clientes {
     public Clientes() {
     }
 
-    public Clientes(String idCliente, String idPersona, String pwUsuario, String correo) {
+    public Clientes(int idCliente, String idPersona, String pwUsuario, String correo) {
         this.idCliente = idCliente;
         this.idPersona = idPersona;
         this.pwUsuario = pwUsuario;
         this.correo = correo;
     }
 
-    public String getIdCliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(String idCliente) {
+    public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
 

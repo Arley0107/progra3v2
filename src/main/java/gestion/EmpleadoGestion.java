@@ -33,10 +33,10 @@ public class EmpleadoGestion {
 
             if (rs.next()) {
                 empleado = new Empleados();
-                empleado.setIdEmpleado(rs.getString(1));
-                empleado.setIdPersona(rs.getString(2));
+                empleado.setIdEmpleado(rs.getInt(1));
+                empleado.setIdPersona(rs.getInt(2));
                 empleado.setPwUsuario(rs.getString(3));
-                empleado.setIdRol(rs.getString(4));
+                empleado.setIdRol(rs.getInt(4));
                 empleado.setCorreo(rs.getString(5));
             }
         } catch (SQLException ex) {
@@ -55,10 +55,10 @@ public class EmpleadoGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 list.add(new Empleados(                        
-                        rs.getString(1), //idEmpleado
-                        rs.getString(2), //idPersona
+                        rs.getInt(1), //idEmpleado
+                        rs.getInt(2), //idPersona
                         rs.getString(3), //pwUsuario         
-                        rs.getString(4), //idRol
+                        rs.getInt(4), //idRol
                         rs.getString(5) //correo
                 ));
             }
@@ -68,19 +68,19 @@ public class EmpleadoGestion {
         return list;
     }
     
-    public static Empleados getEmpleado(String idEmpleado, String idPersona) {
+    public static Empleados getEmpleado(int idEmpleado, int idPersona) {
         Empleados empleado = null;
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETEMPLEADO);
-            sentencia.setString(1, idEmpleado);
-            sentencia.setString(2, idPersona);
+            sentencia.setInt(1, idEmpleado);
+            sentencia.setInt(2, idPersona);
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 empleado = new Empleados(                        
-                        rs.getString(1), //idEmpleado
-                        rs.getString(2), //idPersona
+                        rs.getInt(1), //idEmpleado
+                        rs.getInt(2), //idPersona
                         rs.getString(3), //pwUsuario         
-                        rs.getString(4), //idRol
+                        rs.getInt(4), //idRol
                         rs.getString(5) //correo                       
                 );
             }
@@ -92,12 +92,11 @@ public class EmpleadoGestion {
     
     public static boolean insertEmpleado(Empleados empleado) {
         try {
-            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTEMPLEADO);
-            sentencia.setString(1, empleado.getIdEmpleado());
-            sentencia.setString(2, empleado.getIdPersona());            
-            sentencia.setString(3, empleado.getPwUsuario());
-            sentencia.setString(4, empleado.getIdRol());
-            sentencia.setString(5, empleado.getCorreo());                       
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTEMPLEADO);           
+            sentencia.setInt(1, empleado.getIdPersona());            
+            sentencia.setString(2, empleado.getPwUsuario());
+            sentencia.setInt(3, empleado.getIdRol());
+            sentencia.setString(4, empleado.getCorreo());                       
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoGestion.class.getName()).log(Level.SEVERE, null, ex);
@@ -110,10 +109,10 @@ public class EmpleadoGestion {
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_UPDATEEMPLEADO);                                    
             sentencia.setString(1, empleado.getPwUsuario());            
-            sentencia.setString(2, empleado.getIdRol());
+            sentencia.setInt(2, empleado.getIdRol());
             sentencia.setString(3, empleado.getCorreo());
-            sentencia.setString(4, empleado.getIdEmpleado());
-            sentencia.setString(5, empleado.getIdPersona());            
+            sentencia.setInt(4, empleado.getIdEmpleado());
+            sentencia.setInt(5, empleado.getIdPersona());            
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoGestion.class.getName()).log(Level.SEVERE, null, ex);
@@ -124,7 +123,7 @@ public class EmpleadoGestion {
     public static boolean deleteEmpleado(Empleados empleado) {
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_DELETEEMPLEADO);
-            sentencia.setString(1, empleado.getIdEmpleado());
+            sentencia.setInt(1, empleado.getIdEmpleado());
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoGestion.class.getName()).log(Level.SEVERE, null, ex);
@@ -142,10 +141,10 @@ public class EmpleadoGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 empleado = new Empleados(
-                        rs.getString(1), //idEmpleado
-                        rs.getString(2), //idPersona
+                        rs.getInt(1), //idEmpleado
+                        rs.getInt(2), //idPersona
                         rs.getString(3), //pwUsuario           
-                        rs.getString(4), //idRol
+                        rs.getInt(4), //idRol
                         rs.getString(5) //correo
                 );
 

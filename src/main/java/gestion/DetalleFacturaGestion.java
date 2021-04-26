@@ -28,9 +28,9 @@ public class DetalleFacturaGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 list.add(new DetalleFactura(
-                        rs.getString(1),  //idDetalle                       
-                        rs.getString(2),  //idFactura  
-                        rs.getString(3), //idProducto 
+                        rs.getInt(1),  //idDetalle                       
+                        rs.getInt(2),  //idFactura  
+                        rs.getInt(3), //idProducto 
                         rs.getDouble(4),     //precio
                         rs.getInt(5),      //cantidad
                         rs.getDouble(6)    //subtotal                        
@@ -42,17 +42,17 @@ public class DetalleFacturaGestion {
         return list;
     }
 
-    public static DetalleFactura getDetalleFactura(String idDetalle) {
+    public static DetalleFactura getDetalleFactura(int idDetalle) {
         DetalleFactura detalleFactura = null;
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETDETALLEFACTURA);
-            sentencia.setString(1, idDetalle);
+            sentencia.setInt(1, idDetalle);
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 detalleFactura = new DetalleFactura(
-                        rs.getString(1),  //idDetalle                       
-                        rs.getString(2),  //idFactura  
-                        rs.getString(3), //idProducto 
+                        rs.getInt(1),  //idDetalle                       
+                        rs.getInt(2),  //idFactura  
+                        rs.getInt(3), //idProducto 
                         rs.getDouble(4),     //precio
                         rs.getInt(5),      //cantidad
                         rs.getDouble(6)    //subtotal                        
@@ -66,13 +66,12 @@ public class DetalleFacturaGestion {
 
     public static boolean insertDetalleFactura(DetalleFactura detalleFactura) {
         try {
-            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTDETALLEFACTURA);
-            sentencia.setString(1, detalleFactura.getIdDetalle());            
-            sentencia.setString(2, detalleFactura.getIdFactura()); 
-            sentencia.setString(3, detalleFactura.getIdProducto());
-            sentencia.setDouble(4, detalleFactura.getPrecio());
-            sentencia.setInt(5, detalleFactura.getCantidad());
-            sentencia.setDouble(6, detalleFactura.getSubtotal());
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTDETALLEFACTURA);                      
+            sentencia.setInt(1, detalleFactura.getIdFactura()); 
+            sentencia.setInt(2, detalleFactura.getIdProducto());
+            sentencia.setDouble(3, detalleFactura.getPrecio());
+            sentencia.setInt(4, detalleFactura.getCantidad());
+            sentencia.setDouble(5, detalleFactura.getSubtotal());
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(DetalleFacturaGestion.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,9 +88,9 @@ public class DetalleFacturaGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 detalleFactura = new DetalleFactura(
-                        rs.getString(1),  //idDetalle                       
-                        rs.getString(2),  //idFactura  
-                        rs.getString(3), //idProducto 
+                        rs.getInt(1),  //idDetalle                       
+                        rs.getInt(2),  //idFactura  
+                        rs.getInt(3), //idProducto 
                         rs.getDouble(4),     //precio
                         rs.getInt(5),      //cantidad
                         rs.getDouble(6)    //subtotal    

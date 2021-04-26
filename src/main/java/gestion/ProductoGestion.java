@@ -22,7 +22,7 @@ public class ProductoGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 list.add(new Productos(
-                        rs.getString(1),    //idProducto
+                        rs.getInt(1),    //idProducto
                         rs.getString(2),    //linkImagen
                         rs.getString(3),    //nombre                             
                         rs.getString(4),    //descripcion
@@ -35,15 +35,15 @@ public class ProductoGestion {
         return list;
     }
 
-    public static Productos getProducto(String idProducto) {
+    public static Productos getProducto(int idProducto) {
         Productos producto = null;
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETPRODUCTO);            
-            sentencia.setString(1, idProducto);
+            sentencia.setInt(1, idProducto);
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 producto = new Productos(
-                        rs.getString(1),    //idProducto
+                        rs.getInt(1),    //idProducto
                         rs.getString(2),    //linkImagen
                         rs.getString(3),    //nombre                             
                         rs.getString(4),    //descripcion

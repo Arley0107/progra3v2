@@ -20,7 +20,7 @@ public class PersonaController extends Personas implements Serializable {
         return PersonaGestion.getPersonas();
     }
 
-    public String editaPersona(String idPersona) {
+    public String editaPersona(int idPersona) {
         Personas p = PersonaGestion.getPersona(idPersona);
         if (p != null) {
             this.setIdPersona(p.getIdPersona());

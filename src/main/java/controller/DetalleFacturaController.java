@@ -23,12 +23,12 @@ public class DetalleFacturaController extends DetalleFactura implements Serializ
     
      public String insertaDetalleFactura() {
         if (DetalleFacturaGestion.insertDetalleFactura(this)) {
-            return "confirmacion.xhtml";
+            return "principal.xhtml";
         } else {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,
                     "Error", "Posiblemente el usuario se encuentre duplicado.");
-            FacesContext.getCurrentInstance().addMessage("ingresaUsuarioForm:identificacion", msg);
-            return "registroUsuario.xhtml";
+            FacesContext.getCurrentInstance().addMessage("menuForm:cantidad", msg);
+            return "menu.xhtml";
         }
     }
     

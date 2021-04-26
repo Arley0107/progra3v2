@@ -3,7 +3,7 @@ package model;
 
 public class Sucursales {
     
-    private String idSucursal;
+    private int idSucursal;
     private String nombre;
     private String direccion;
     private int idProvincia;
@@ -11,18 +11,18 @@ public class Sucursales {
     public Sucursales() {
     }
 
-    public Sucursales(String idSucursal, String nombre, String direccion, int idProvincia) {
+    public Sucursales(int idSucursal, String nombre, String direccion, int idProvincia) {
         this.idSucursal = idSucursal;
         this.nombre = nombre;
         this.direccion = direccion;
         this.idProvincia = idProvincia;
     }
 
-    public String getIdSucursal() {
+    public int getIdSucursal() {
         return idSucursal;
     }
 
-    public void setIdSucursal(String idSucursal) {
+    public void setIdSucursal(int idSucursal) {
         this.idSucursal = idSucursal;
     }
 

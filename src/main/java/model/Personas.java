@@ -3,7 +3,7 @@ package model;
 
 public class Personas {
     
-    private String idPersona;
+    private int idPersona;
     private String nombre;
     private String apellido1;
     private String apellido2;
@@ -14,7 +14,7 @@ public class Personas {
     public Personas() {
     }
 
-    public Personas(String idPersona, String nombre, String apellido1, String apellido2, String celular, char genero, String domicilio) {
+    public Personas(int idPersona, String nombre, String apellido1, String apellido2, String celular, char genero, String domicilio) {
         this.idPersona = idPersona;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -24,11 +24,11 @@ public class Personas {
         this.domicilio = domicilio;
     }
 
-    public String getIdPersona() {
+    public int getIdPersona() {
         return idPersona;
     }
 
-    public void setIdPersona(String idPersona) {
+    public void setIdPersona(int idPersona) {
         this.idPersona = idPersona;
     }
 

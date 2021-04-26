@@ -1,7 +1,6 @@
 package controller;
 
 import gestion.ClienteGestion;
-import gestion.PersonaGestion;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -44,8 +43,8 @@ public class ClienteController extends Clientes implements Serializable {
         return ClienteGestion.getClientes();
     }
 
-    public String editaCliente(String idCliente, String idPersona) {
-        Clientes c = ClienteGestion.getCliente(idCliente, idPersona);
+    public String editaCliente(int idCliente) {
+        Clientes c = ClienteGestion.getCliente(idCliente);
         if (c != null) {
             this.setIdCliente(c.getIdCliente());
             this.setIdPersona(c.getIdPersona());

@@ -3,16 +3,16 @@ package model;
 
 public class Empleados {
     
-    private String idEmpleado;
-    private String idPersona;
+    private int idEmpleado;
+    private int idPersona;
     private String pwUsuario;
-    private String idRol;
+    private int idRol;
     private String correo;
 
     public Empleados() {
     }
 
-    public Empleados(String idEmpleado, String idPersona, String pwUsuario, String idRol, String correo) {
+    public Empleados(int idEmpleado, int idPersona, String pwUsuario, int idRol, String correo) {
         this.idEmpleado = idEmpleado;
         this.idPersona = idPersona;
         this.pwUsuario = pwUsuario;
@@ -20,19 +20,19 @@ public class Empleados {
         this.correo = correo;
     }
 
-    public String getIdEmpleado() {
+    public int getIdEmpleado() {
         return idEmpleado;
     }
 
-    public void setIdEmpleado(String idEmpleado) {
+    public void setIdEmpleado(int idEmpleado) {
         this.idEmpleado = idEmpleado;
     }
 
-    public String getIdPersona() {
+    public int getIdPersona() {
         return idPersona;
     }
 
-    public void setIdPersona(String idPersona) {
+    public void setIdPersona(int idPersona) {
         this.idPersona = idPersona;
     }
 
@@ -44,11 +44,11 @@ public class Empleados {
         this.pwUsuario = pwUsuario;
     }
 
-    public String getIdRol() {
+    public int getIdRol() {
         return idRol;
     }
 
-    public void setIdRol(String idRol) {
+    public void setIdRol(int idRol) {
         this.idRol = idRol;
     }
 

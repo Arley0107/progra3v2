@@ -1,11 +1,10 @@
-
 package model;
 
 public class DetalleFactura {
-    
-    private String idDetalle;
-    private String idFactura;
-    private String idProducto;
+
+    private int idDetalle;
+    private int idFactura;
+    private int idProducto;
     private Double precio;
     private int cantidad;
     private Double subtotal;
@@ -13,36 +12,42 @@ public class DetalleFactura {
     public DetalleFactura() {
     }
 
-    public DetalleFactura(String idDetalle, String idFactura, String idProducto, Double precio, int cantidad, Double subtotal) {
+    public DetalleFactura(int cantidad, Double precio) {
+        this.cantidad = cantidad;
+        this.precio = precio;
+        this.subtotal = cantidad * precio;
+    }
+
+    public DetalleFactura(int idDetalle, int idFactura, int idProducto, Double precio, int cantidad, Double subtotal) {
         this.idDetalle = idDetalle;
         this.idFactura = idFactura;
         this.idProducto = idProducto;
         this.precio = precio;
         this.cantidad = cantidad;
-        this.subtotal = subtotal;
+        this.subtotal = cantidad * precio;
     }
 
-    public String getIdDetalle() {
+    public int getIdDetalle() {
         return idDetalle;
     }
 
-    public void setIdDetalle(String idDetalle) {
+    public void setIdDetalle(int idDetalle) {
         this.idDetalle = idDetalle;
     }
 
-    public String getIdFactura() {
+    public int getIdFactura() {
         return idFactura;
     }
 
-    public void setIdFactura(String idFactura) {
+    public void setIdFactura(int idFactura) {
         this.idFactura = idFactura;
     }
 
-    public String getIdProducto() {
+    public int getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(String idProducto) {
+    public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
 
@@ -63,11 +68,7 @@ public class DetalleFactura {
     }
 
     public Double getSubtotal() {
-        return subtotal;
+        return this.subtotal;
     }
 
-    public void setSubtotal(Double subtotal) {
-        this.subtotal = subtotal;
-    }            
-    
 }

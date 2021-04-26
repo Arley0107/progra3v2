@@ -21,6 +21,7 @@ public class FacturaGestion {
     private static final String SQL_GETFACTURAS = "Select * from facturas";
     private static final String SQL_GETFACTURA = "Select * from facturas where idFactura=?";
     private static final String SQL_INSERTFACTURA = "Insert into facturas(idFactura,codigo,idCliente,fecha,total)values(?,?,?,now(),?)";
+    private static final String SQL_SELECTULTIMAFACTURA = "Select * from facturas where idFactura=(select max(idFactura) from facturas);";
 
     public static ArrayList<Facturas> getFacturas() {
         ArrayList<Facturas> list = new ArrayList<>();
@@ -29,9 +30,9 @@ public class FacturaGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 list.add(new Facturas(
-                        rs.getString(1), //idFactura
+                        rs.getInt(1), //idFactura
                         rs.getInt(2), //codigo
-                        rs.getString(3), //idCliente                              
+                        rs.getInt(3), //idCliente                              
                         rs.getDate(4), //fecha
                         rs.getDouble(5) //total
                 ));
@@ -42,17 +43,17 @@ public class FacturaGestion {
         return list;
     }
 
-    public static Facturas getFactura(String idFactura) {
+    public static Facturas getFactura(int idFactura) {
         Facturas factura = null;
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETFACTURA);
-            sentencia.setString(1, idFactura);
+            sentencia.setInt(1, idFactura);
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 factura = new Facturas(
-                        rs.getString(1), //idFactura
+                        rs.getInt(1), //idFactura
                         rs.getInt(2), //codigo
-                        rs.getString(3), //idCliente                              
+                        rs.getInt(3), //idCliente                              
                         rs.getDate(4), //fecha
                         rs.getDouble(5) //total                     
                 );
@@ -66,17 +67,45 @@ public class FacturaGestion {
     public static boolean insertFactura(Facturas factura) {
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTFACTURA);
-            sentencia.setString(1, factura.getIdFactura());
-            sentencia.setInt(2, factura.getCodigo());
-            sentencia.setString(3, factura.getIdCliente());
-            sentencia.setObject(4, factura.getFecha());
-            sentencia.setDouble(5, factura.getTotal());
+            sentencia.setInt(1, factura.getCodigo());
+            sentencia.setInt(2, factura.getIdCliente());
+            sentencia.setObject(3, factura.getFecha());
+            sentencia.setDouble(4, factura.getTotal());
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(FacturaGestion.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
+
+    public static Facturas getUltimaFactura() {
+        Facturas factura = null;
+        try {
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_SELECTULTIMAFACTURA);            
+            ResultSet rs = sentencia.executeQuery();         
+                factura = new Facturas(
+                        rs.getInt(1), //idFactura
+                        rs.getInt(2), //codigo
+                        rs.getInt(3), //idCliente                              
+                        rs.getDate(4), //fecha
+                        rs.getDouble(5) //total                     
+                );
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(FacturaGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return factura;
+    }
+
+    /**
+     * try { PreparedStatement sentencia =
+     * Conexion.getConexion().prepareStatement(SQL_SELECTULTIMAFACTURA);
+     * Facturas facturaBD = sentencia.executeUpdate(); Facturas factura = new
+     * Facturas(facturaBD.fecha, etc); return factura; } catch (SQLException ex)
+     * { Logger.getLogger(FacturaGestion.class.getName()).log(Level.SEVERE,
+     * null, ex); return null; } }
+    * *
+     */
 
     public static String generarJson() {
         Facturas factura = null;
@@ -87,9 +116,9 @@ public class FacturaGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 factura = new Facturas(
-                        rs.getString(1), //idFactura
+                        rs.getInt(1), //idFactura
                         rs.getInt(2), //codigo
-                        rs.getString(3), //idCliente                              
+                        rs.getInt(3), //idCliente                              
                         rs.getDate(4), //fecha
                         rs.getDouble(5) //total 
                 );

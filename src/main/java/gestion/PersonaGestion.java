@@ -28,7 +28,7 @@ public class PersonaGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 list.add(new Personas(
-                        rs.getString(1),      //idPersona
+                        rs.getInt(1),      //idPersona
                         rs.getString(2),         //nombre
                         rs.getString(3),      //apellido1                                 
                         rs.getString(4),      //apellido2
@@ -43,15 +43,15 @@ public class PersonaGestion {
         return list;
     }
 
-    public static Personas getPersona(String idPersona) {
+    public static Personas getPersona(int idPersona) {
         Personas persona = null;
         try {
             PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETPERSONA);            
-            sentencia.setString(1, idPersona);
+            sentencia.setInt(1, idPersona);
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 persona = new Personas(
-                        rs.getString(1),      //idPersona
+                        rs.getInt(1),      //idPersona
                         rs.getString(2),         //nombre
                         rs.getString(3),      //apellido1                                 
                         rs.getString(4),      //apellido2
@@ -68,14 +68,13 @@ public class PersonaGestion {
 
     public static boolean insertPersona(Personas persona) {
         try {
-            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTPERSONA);
-            sentencia.setString(1, persona.getIdPersona());
-            sentencia.setString(2, persona.getNombre());
-            sentencia.setString(3, persona.getApellido1());
-            sentencia.setString(4, persona.getApellido2());
-            sentencia.setString(5, persona.getCelular());
-            sentencia.setString(6, "" + persona.getGenero());
-            sentencia.setString(7, persona.getDomicilio());
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTPERSONA);            
+            sentencia.setString(1, persona.getNombre());
+            sentencia.setString(2, persona.getApellido1());
+            sentencia.setString(3, persona.getApellido2());
+            sentencia.setString(4, persona.getCelular());
+            sentencia.setString(5, "" + persona.getGenero());
+            sentencia.setString(6, persona.getDomicilio());
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(PersonaGestion.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,7 +91,7 @@ public class PersonaGestion {
             sentencia.setString(4, persona.getCelular());
             sentencia.setString(5, "" + persona.getGenero());
             sentencia.setString(6, persona.getDomicilio());
-            sentencia.setString(7, persona.getIdPersona());
+            sentencia.setInt(7, persona.getIdPersona());
             return sentencia.executeUpdate() > 0;
         } catch (SQLException ex) {
             Logger.getLogger(PersonaGestion.class.getName()).log(Level.SEVERE, null, ex);
@@ -123,7 +122,7 @@ public class PersonaGestion {
             ResultSet rs = sentencia.executeQuery();
             while (rs != null && rs.next()) {
                 persona = new Personas(
-                        rs.getString(1),      //idPersona
+                        rs.getInt(1),      //idPersona
                         rs.getString(2),         //nombre
                         rs.getString(3),      //apellido1                                 
                         rs.getString(4),      //apellido2

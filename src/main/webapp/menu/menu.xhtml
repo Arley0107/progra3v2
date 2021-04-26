@@ -44,12 +44,16 @@
                                                    width="10%">
                                     <b:inputText placeholder="Cantidad"                                                                                          
                                                  id="cantidad" 
-                                                 value="#{detalleFacturaController.cantidad}"                                                 
+                                                 value="#{producto.cantidadDetalleFactura}"                                                 
                                                  />
-                                </b:dataTableColumn>                                
+                                </b:dataTableColumn>                                   
                             </b:dataTable>
+                            <b:commandButton value="Ir a pagar" 
+                                                 look="primary" 
+                                                 action="#{facturaController.insertaFactura(productoController.productos)}" />
                         </b:panel>
-                    </b:container>
+                    </b:container>                    
+
                 </h:form> 
             </ui:define>
         </ui:composition>

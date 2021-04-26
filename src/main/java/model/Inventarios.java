@@ -3,24 +3,24 @@ package model;
 
 public class Inventarios {
     
-    private String idInventario;
+    private int idInventario;
     private String nombre;
-    private String idSucursal;
+    private int idSucursal;
 
     public Inventarios() {
     }
 
-    public Inventarios(String idInventario, String nombre, String idSucursal) {
+    public Inventarios(int idInventario, String nombre, int idSucursal) {
         this.idInventario = idInventario;
         this.nombre = nombre;
         this.idSucursal = idSucursal;
     }
 
-    public String getIdInventario() {
+    public int getIdInventario() {
         return idInventario;
     }
 
-    public void setIdInventario(String idInventario) {
+    public void setIdInventario(int idInventario) {
         this.idInventario = idInventario;
     }
 
@@ -32,11 +32,11 @@ public class Inventarios {
         this.nombre = nombre;
     }
 
-    public String getIdSucursal() {
+    public int getIdSucursal() {
         return idSucursal;
     }
 
-    public void setIdSucursal(String idSucursal) {
+    public void setIdSucursal(int idSucursal) {
         this.idSucursal = idSucursal;
     }        
     

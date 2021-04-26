@@ -64,7 +64,7 @@ public class EmpleadoController extends Empleados implements Serializable {
         return EmpleadoGestion.getEmpleados();
     }
     
-    public String editaEmpleado(String idEmpleado, String idPersona) {
+    public String editaEmpleado(int idEmpleado, int idPersona) {
         Empleados e = EmpleadoGestion.getEmpleado(idEmpleado,idPersona);
         if (e != null) {    
             this.setIdEmpleado(e.getIdEmpleado());

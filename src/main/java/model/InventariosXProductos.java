@@ -3,32 +3,32 @@ package model;
 
 public class InventariosXProductos {
     
-    private String idInventario; 
-    private String idProducto;
+    private int idInventario; 
+    private int idProducto;
     private int cantidad;
 
     public InventariosXProductos() {
     }
 
-    public InventariosXProductos(String idInventario, String idProducto, int cantidad) {
+    public InventariosXProductos(int idInventario, int idProducto, int cantidad) {
         this.idInventario = idInventario;
         this.idProducto = idProducto;
         this.cantidad = cantidad;
     }
 
-    public String getIdInventario() {
+    public int getIdInventario() {
         return idInventario;
     }
 
-    public void setIdInventario(String idInventario) {
+    public void setIdInventario(int idInventario) {
         this.idInventario = idInventario;
     }
 
-    public String getIdProducto() {
+    public int getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(String idProducto) {
+    public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
 
