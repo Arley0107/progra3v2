@@ -16,7 +16,7 @@ import model.Empleados;
 
 public class EmpleadoGestion {
 
-    private static final String SQL_GETEMPLEADOS = "Select * from empleado";
+    private static final String SQL_GETEMPLEADOS = "Select * from empleados";
     private static final String SQL_GETEMPLEADOLOGIN = "Select * from empleados where correo=? and pwUsuario=MD5(?)";
     private static final String SQL_GETEMPLEADO = "Select * from empleados where idEmpleado=? and idPersona=?";
     private static final String SQL_INSERTEMPLEADO = "Insert into empleados(idEmpleado,idPersona,pwUsuario,idRol,correo)values(?,?,MD5(?),?,?)";

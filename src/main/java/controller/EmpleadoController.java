@@ -49,14 +49,14 @@ public class EmpleadoController extends Empleados implements Serializable {
     public String empleado() {
         Empleados empleado = EmpleadoGestion.getEmpleadoLogin(this.getCorreo(), this.getPwUsuario());
         if (empleado != null) {
-            if ("1".equals(empleado.getIdRol())) {
+            if (empleado.getIdRol() == 1) {
                 show = true;
             }
             return "principal.xhtml";
         } else {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario o contraseña invalida");
             FacesContext.getCurrentInstance().addMessage("adminLoginForm:clave", msg);
-            return "index.xhtml";
+            return "adminLogin.xhtml";
         }
     }
     

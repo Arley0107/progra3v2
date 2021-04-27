@@ -72,7 +72,11 @@
 
                         <!-- Reportes -->
                         <b:dropMenu value="Reportes" icon-awesome="fa-newspaper-o" rendered="#{empleadoController.show}">
-                            <b:navLink value="Usuario" href="#{request.contextPath}/faces/usuarios/reporte/reporteUsuario.xhtml"/>
+                            <b:navLink value="Personas" href="#{request.contextPath}/faces/reporte/reportePersonas.xhtml"/>
+                            <b:navLink value="Empleados" href="#{request.contextPath}/faces/reporte/reporteEmpleados.xhtml"/>
+                            <b:navLink value="Clientes" href="#{request.contextPath}/faces/reporte/reporteClientes.xhtml"/>
+                            <b:navLink value="Facturas (ventas)" href="#{request.contextPath}/faces/reporte/reporteFacturas.xhtml"/>
+                            <b:navLink value="Inventario por sucursal" href="#{request.contextPath}/faces/reporte/reporteInventarioXProducto.xhtml"/>
                         </b:dropMenu> 
 
                         <!-- Gráfico -->                        

@@ -126,11 +126,11 @@ public class FacturaGestion {
                 DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String fecha1 = sdf.format(factura.getFecha());
                 JsonObjectBuilder creadorJson = Json.createObjectBuilder();
-                JsonObject objectJson = creadorJson.add("idEmpleado", factura.getIdFactura())
+                JsonObject objectJson = creadorJson.add("idFactura", factura.getIdFactura())
                         .add("codigo", factura.getCodigo())
                         .add("idCliente", factura.getIdCliente())
                         .add("fecha", fecha1)
-                        .add("correo", factura.getTotal())
+                        .add("total", factura.getTotal())
                         .build();
                 StringWriter tira = new StringWriter();
                 JsonWriter jsonWriter = Json.createWriter(tira);

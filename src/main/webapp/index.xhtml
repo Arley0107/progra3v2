@@ -6,15 +6,49 @@
 
 
     <h:head>
-        <title>Mariann´s Food</title>          
+        <title>Mariann´s Food</title>   
+        <style>
+            #indexBody{
+                background-image: url("logo_background.jpeg");                
+                background-repeat: repeat
+            }
+        </style>
 
     </h:head>
-    <h:body>
-        
+    <h:body id="indexBody">
+
         <b:panel title="Iniciar sesión" look="default">
-            <b:button value="Cliente" href="#{request.contextPath}/faces/clienteLogin.xhtml"/>
+            <b:button value="Cliente" href="#{request.contextPath}/faces/clienteLogin.xhtml" style="align-content: center"/>
             <b:button value="Admin" href="#{request.contextPath}/faces/adminLogin.xhtml"/>
         </b:panel>
+
+        <div align="center" style="position: relative">
+            <b:carousel id="tiovivo" style="width:800px" interval="2500">
+                <b:carouselItem >
+                    <img src="https://homeburgers.com/uploads/product/054bb48d12d44687b47c00b41ab31097/hs5.jpg" style="width: 800px; height: 600px" />
+                    <b:carouselCaption>
+                        <h2>Hamburguesa sencilla</h2>
+                        <p>Nuestra sencilla hamburguesa tiene la <a style="color:#fff">"receta secreta" </a>para enamorarte</p>
+                    </b:carouselCaption>
+                </b:carouselItem>
+                <b:carouselItem caption="Irresistible hamburguesa con queso">
+                    <img src="https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2018/09/receta-super-facil-de-carne-para-hamburguesa-suave.jpg" style="width: 800px; height: 600px" />
+                </b:carouselItem>
+                <b:carouselItem caption="¿No se ve delicioso?">
+                    <img src="https://img.antena3.com/clipping/cmsimages02/2016/10/18/B3D28CB1-7F46-438B-A487-D7C3B5876195/69.jpg" style="width: 800px; height: 600px" />
+                </b:carouselItem>
+                <b:carouselItem>
+                    <img src="https://cdn.sanjosecostarica.org/wp-content/uploads/2020/07/Carne-Salsa.jpg" alt="Valladolid" style="width: 800px; height: 600px" />
+                    <b:carouselCaption>
+                        <h2>¡No te quedes con las ganas!</h2>
+                    </b:carouselCaption>
+                </b:carouselItem>
+                <b:carouselItem caption="Hacé tu pedido ya">
+                    <img src="https://www.seriouseats.com/2020/04/20200416-cuban-pollo-a-la-plancha-aaron-hutcherson-10-300x225.jpg" alt="Valladolid" style="width: 800px; height: 600px" />
+                </b:carouselItem>
+            </b:carousel>
+        </div>
+
 
     </h:body>
 </html>

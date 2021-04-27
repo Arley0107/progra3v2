@@ -35,7 +35,7 @@ public class ClienteController extends Clientes implements Serializable {
         } else {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario o contraseña invalida");
             FacesContext.getCurrentInstance().addMessage("loginForm:clave", msg);
-            return "index.xhtml";
+            return "clienteLogin.xhtml";
         }
     }
 

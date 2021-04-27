@@ -1,6 +1,16 @@
 package controller;
 
 import gestion.EmpleadoGestion;
+import gestion.PersonaGestion;
+import gestion.ClienteGestion;
+import gestion.DetalleFacturaGestion;
+import gestion.FacturaGestion;
+import gestion.InventarioGestion;
+import gestion.InventarioXProductosGestion;
+import gestion.ProductoGestion;
+import gestion.ProvinciasGestion;
+import gestion.RolesGestion;
+import gestion.SucursalesGestion;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -28,13 +38,22 @@ public class RespaldoController implements Serializable {
         ZipOutputStream out = null;
         try {
 
-            String json = "Usuarios:\n\n" + EmpleadoGestion.generarJson() + "\n\nEmpleados:\n\n"
-                    + EmpleadoGestion.generarJson();
+            String json = "Personas:\n\n" + PersonaGestion.generarJson()
+                    + "\n\nRoles:\n\n" + RolesGestion.generarJson()
+                    + "\n\nEmpleados:\n\n" + EmpleadoGestion.generarJson()
+                    + "\n\nClientes:\n\n" + ClienteGestion.generarJson()
+                    + "\n\nProductos:\n\n" + ProductoGestion.generarJson()
+                    + "\n\nFacturas:\n\n" + FacturaGestion.generarJson()
+                    + "\n\nDetalleFactura:\n\n" + DetalleFacturaGestion.generarJson()
+                    + "\n\nInventarios:\n\n" + InventarioGestion.generarJson()
+                    + "\n\nInventariosXProductos:\n\n" + InventarioXProductosGestion.generarJson()
+                    + "\n\nProvincias:\n\n" + ProvinciasGestion.generarJson()
+                    + "\n\nSucursales:\n\n" + SucursalesGestion.generarJson();
 
             File f = new File(FacesContext
                     .getCurrentInstance().
                     getExternalContext()
-                    .getRealPath("/respaldo") + "usuarios.zip");
+                    .getRealPath("/respaldo") + "respaldo.zip");
             out = new ZipOutputStream(new FileOutputStream(f));
             ZipEntry e = new ZipEntry("respaldo.json");
             out.putNextEntry(e);
@@ -46,7 +65,7 @@ public class RespaldoController implements Serializable {
             File zipPath = new File(FacesContext
                     .getCurrentInstance().
                     getExternalContext()
-                    .getRealPath("/respaldo") + "usuarios.zip");
+                    .getRealPath("/respaldo") + "respaldo.zip");
 
             byte[] zip = Files.readAllBytes(zipPath.toPath());
 
@@ -62,14 +81,14 @@ public class RespaldoController implements Serializable {
             FacesContext.getCurrentInstance().responseComplete();
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(EmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RespaldoController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(EmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RespaldoController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 out.close();
             } catch (IOException ex) {
-                Logger.getLogger(EmpleadoController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RespaldoController.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
