@@ -38,19 +38,7 @@
                                 <b:dataTableColumn value="#{producto.precio}" 
                                                    label="Precio(¢)"
                                                    width="10%"
-                                                   />                                
-                                <b:dataTableColumn style="text-align: center"
-                                                   label="Pedir"
-                                                   width="10%">
-                                    <b:inputText placeholder="Cantidad"                                                                                          
-                                                 id="cantidad" 
-                                                 value="#{producto.cantidadDetalleFactura}"                                                 
-                                                 />
-                                </b:dataTableColumn>                                   
-                            </b:dataTable>
-                            <b:commandButton value="Ir a pagar" 
-                                                 look="primary" 
-                                                 action="#{facturaController.insertaFactura(productoController.productos)}" />
+                                                   />                                                           
                         </b:panel>
                     </b:container>                    
 

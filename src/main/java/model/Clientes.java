@@ -17,6 +17,12 @@ public class Clientes {
         this.pwUsuario = pwUsuario;
         this.correo = correo;
     }
+    
+    public Clientes(String idPersona, String pwUsuario, String correo) {
+        this.idPersona = idPersona;
+        this.pwUsuario = pwUsuario;
+        this.correo = correo;
+    }
 
     public int getIdCliente() {
         return idCliente;

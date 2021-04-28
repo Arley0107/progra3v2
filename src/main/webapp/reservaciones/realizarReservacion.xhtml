@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+
+                <h:form id="realizarReservacionForm">
+                    <b:container fluid="true">
+                        <b:panel title="Realizar reservación" look="primary">
+
+                            <!-- Fecha que desea la reservacion -->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Fecha de reservación" for="fecha"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:datepicker required="true"                                                 
+                                                  id="fecha"
+                                                  value="#{reservacionController.fecha}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="fecha"/>
+                                </b:column>
+                            </b:row>
+
+                            <!-- Hora de la reservación -->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Hora de la reservacion" for="hora"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:panelGrid columns="2">
+                                        <b:radiobutton value="#{reservacionController.hora}"
+                                                       itemLabel="13:00" itemValue="13:00"/>
+                                        <b:radiobutton value="#{reservacionController.hora}"
+                                                       itemLabel="14:00" itemValue="14:00"/>
+                                        <b:radiobutton value="#{reservacionController.hora}"
+                                                       itemLabel="15:00" itemValue="15:00"/>
+                                        <b:radiobutton value="#{reservacionController.hora}"
+                                                       itemLabel="16:00" itemValue="16:00"/>
+                                        <b:radiobutton value="#{reservacionController.hora}"
+                                                       itemLabel="17:00" itemValue="17:00"/>
+                                        <b:radiobutton value="#{reservacionController.hora}"
+                                                       itemLabel="18:00" itemValue="18:00"/>
+                                        <b:radiobutton value="#{reservacionController.hora}"
+                                                       itemLabel="19:00" itemValue="19:00"/>
+                                        <b:radiobutton value="#{reservacionController.hora}"
+                                                       itemLabel="20:00" itemValue="20:00"/>
+                                    </b:panelGrid>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="hora"/>
+                                </b:column>
+                            </b:row>
+
+                            <!-- Sucursal -->
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Sucursal" for="idSucursal"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:panelGrid columns="2">
+                                        <b:radiobutton value="#{reservacionController.idSucursal}"
+                                                       itemLabel="Mariann´s Food San José" itemValue="1"/>
+                                        <b:radiobutton value="#{reservacionController.idSucursal}"
+                                                       itemLabel="Mariann´s Food Cartago" itemValue="2"/>
+                                        <b:radiobutton value="#{reservacionController.idSucursal}"
+                                                       itemLabel="Mariann´s Food Alajuela" itemValue="3"/>                                        
+                                    </b:panelGrid>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="idSucursal"/>
+                                </b:column>
+                            </b:row>
+
+                            <!-- Botón de realizar reservación -->
+                            <b:row>
+                                <b:column medium-screen="3">
+                                    <p:captcha label="Check"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:commandButton value="Confirmar reservación"
+                                                     action="#{reservacionController.insertaReservacion()}"
+                                                     look="primary"
+                                                     style="width: 100%"/>
+                                </b:column>
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

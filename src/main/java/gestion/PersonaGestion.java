@@ -1,5 +1,6 @@
 package gestion;
 
+import static gestion.ClienteGestion.getCliente;
 import java.io.StringWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,9 +19,10 @@ public class PersonaGestion {
 
     private static final String SQL_GETPERSONAS = "Select * from personas";
     private static final String SQL_GETPERSONA = "Select * from personas where idPersona=?";
-    private static final String SQL_INSERTPERSONA = "Insert into personas(idPersona,nombre,apellido1,apellido2,celular,genero,domicilio) values (?,?,?,?,?,?,?)";
+    private static final String SQL_INSERTPERSONA = "Insert into personas(nombre,apellido1,apellido2,celular,genero,domicilio) values (?,?,?,?,?,?)";
     private static final String SQL_UPDATEPERSONA = "Update personas set nombre=?,apellido1=?,apellido2=?,celular=?,genero=?,domicilio=? where idPersona=?";
-
+    private static final String SQL_GETULTIMAPERSONA = "Select * from personas where idPersona=(select max(idPersona) from personas)";    
+    
     public static ArrayList<Personas> getPersonas() {
         ArrayList<Personas> list = new ArrayList<>();
         try {
@@ -63,6 +65,28 @@ public class PersonaGestion {
         } catch (SQLException ex) {
             Logger.getLogger(PersonaGestion.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return persona;
+    }
+    
+    public static Personas getUltimaPersona() {    
+        Personas persona = null;
+        try {
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_GETULTIMAPERSONA);                        
+            ResultSet rs = sentencia.executeQuery();
+                if (rs.next()) {
+                persona = new Personas();
+                persona.setIdPersona(rs.getInt(1));
+                persona.setNombre(rs.getString(2));
+                persona.setApellido1(rs.getString(3));
+                persona.setApellido2(rs.getString(4));
+                persona.setCelular(rs.getString(5));
+                persona.setGenero(rs.getString(6).charAt(0));
+                persona.setDomicilio(rs.getString(7));                              
+                }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PersonaGestion.class.getName()).log(Level.SEVERE, null, ex);
+        }    
         return persona;
     }
 

@@ -21,7 +21,7 @@ public class FacturaGestion {
     private static final String SQL_GETFACTURAS = "Select * from facturas";
     private static final String SQL_GETFACTURA = "Select * from facturas where idFactura=?";
     private static final String SQL_INSERTFACTURA = "Insert into facturas(idFactura,codigo,idCliente,fecha,total)values(?,?,?,now(),?)";
-    private static final String SQL_SELECTULTIMAFACTURA = "Select * from facturas where idFactura=(select max(idFactura) from facturas);";
+    private static final String SQL_SELECTULTIMAFACTURA = "Select * from facturas where idFactura=(select max(idFactura) from facturas)";
 
     public static ArrayList<Facturas> getFacturas() {
         ArrayList<Facturas> list = new ArrayList<>();

@@ -13,16 +13,18 @@ import javax.json.JsonObjectBuilder;
 import javax.json.JsonWriter;
 import model.Conexion;
 import model.Clientes;
+import model.Personas;
 
 public class ClienteGestion {
 
     private static final String SQL_GETCLIENTES = "Select * from clientes";
     private static final String SQL_GETCLIENTELOGIN = "Select * from clientes where correo=? and pwUsuario=MD5(?)";
     private static final String SQL_GETCLIENTE = "Select * from clientes where idCliente=?";
-    private static final String SQL_INSERTCLIENTE = "Insert into clientes(idCliente,idPersona,pwUsuario,correo)values(?,?,MD5(?),?)";
+    private static final String SQL_INSERTCLIENTE = "Insert into clientes(idPersona,pwUsuario,correo)values(?,MD5(?),?)";
     private static final String SQL_UPDATECLIENTE = "Update clientes set pwUsuario=MD5(?),correo=? where idEmpleado=? and idPersona=?";
     private static final String SQL_DELETECLIENTE = "Delete from clientes where idCliente=?";
     private static final String SQL_DELETEPERSONA = "Delete from personas where idPersona=?";
+    public static Clientes getCliente;
 
     public static Clientes getClienteLogin(String correo, String pwUsuario) {
         Clientes cliente = null;
@@ -38,7 +40,8 @@ public class ClienteGestion {
                 cliente.setIdPersona(rs.getString(2));
                 cliente.setPwUsuario(rs.getString(3));
                 cliente.setCorreo(rs.getString(4));
-            }
+                getCliente = cliente;
+            }            
         } catch (SQLException ex) {
             Logger.getLogger(ClienteGestion.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -85,9 +88,10 @@ public class ClienteGestion {
     }
 
     public static boolean insertCliente(Clientes cliente) {
+        Personas persona = PersonaGestion.getUltimaPersona();
         try {
-            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTCLIENTE);           
-            sentencia.setString(1, cliente.getIdPersona());
+            PreparedStatement sentencia = Conexion.getConexion().prepareStatement(SQL_INSERTCLIENTE);              
+            sentencia.setInt(1, persona.getIdPersona());
             sentencia.setString(2, cliente.getPwUsuario());
             sentencia.setString(3, cliente.getCorreo());
             return sentencia.executeUpdate() > 0;

@@ -23,6 +23,15 @@ public class Personas {
         this.genero = genero;
         this.domicilio = domicilio;
     }
+    
+    public Personas(String nombre, String apellido1, String apellido2, String celular, char genero, String domicilio) {
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.celular = celular;
+        this.genero = genero;
+        this.domicilio = domicilio;
+    }
 
     public int getIdPersona() {
         return idPersona;

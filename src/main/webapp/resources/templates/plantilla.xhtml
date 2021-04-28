@@ -59,9 +59,9 @@
                             <b:navLink value="Heredia" href="#"/>
                         </b:dropMenu> 
 
-                        <!-- Pedidos -->
-                        <b:dropMenu value="Pedidos" icon-awesome="fa-cart-plus">
-                            <b:navLink value="Realizar Pedido" href="#{request.contextPath}/faces/pedidos/realizarPedido.xhtml"/>                            
+                        <!-- Reservaciones -->
+                        <b:dropMenu value="Reservaciones" icon-awesome="fa-cart-plus">
+                            <b:navLink value="Realizar Reservacion" href="#{request.contextPath}/faces/reservaciones/realizarReservacion.xhtml"/>                            
                         </b:dropMenu>
 
                         <!-- Personas -->
@@ -92,10 +92,7 @@
                                    rendered="#{empleadoController.show}"/>                       
                     </b:navbarLinks>
 
-                    <b:navbarLinks pull="right" style-class="hidden-xs">      
-
-                        <b:navLink value="Carrito" 
-                                   icon-awesome="shopping-cart"/>                                                   
+                    <b:navbarLinks pull="right" style-class="hidden-xs">                                                        
 
                         <b:dropMenu value="Cuenta" 
                                     icon-awesome="fa-user">  
